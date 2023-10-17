@@ -46,12 +46,11 @@ public class WelcomePage {
         this.frame.add(button5);
 
         JButton logoutButton = new JButton("Logout");
-        logoutButton.setBounds(660, 600, 130, 35);
+        logoutButton.setBounds(660, 600, 100, 35);
         this.frame.add(logoutButton);
 
-        ImageIcon settingsImage = new ImageIcon("settings.png");
-        JButton settingsButton = new JButton(settingsImage);
-        settingsButton.setBounds(795, 600, 65, 35);
+        JButton settingsButton = new JButton("Settings");
+        settingsButton.setBounds(760, 600, 100, 35);
         this.frame.add(settingsButton);
 
         this.frame.setDefaultCloseOperation(3);
