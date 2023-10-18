@@ -61,31 +61,36 @@ public class WelcomePage {
 
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                WelcomePage.this.openNewPage("Discrete Maths");
+                frame.dispose();
+                new DiscreteMaths();
             }
         });
 
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                WelcomePage.this.openNewPage("Computer Organization");
+                frame.dispose();
+                new ComputerOrganization();
             }
         });
 
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                WelcomePage.this.openNewPage("Computer Science");
+                frame.dispose();
+                new ComputerScience();
             }
         });
 
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                WelcomePage.this.openNewPage("Timer Game");
+                frame.dispose();
+                new TimerGame();
             }
         });
 
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button5) {
+                    frame.dispose();
                     ChatGPTWidget.main(new String[0]);
                 }
 
@@ -96,6 +101,7 @@ public class WelcomePage {
 
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == logoutButton) {
+                    frame.dispose();
                     new LoginPage(this.idandPasswords.getLoginInfo());
                 }
 

@@ -81,7 +81,7 @@ public class ChatGPTWidget {
         JButton submitButton = new JButton("Submit");
         panel.add(submitButton);
 
-        final JTextArea responseArea = new JTextArea(5, 30);
+        final JTextArea responseArea = new JTextArea(10, 60);
         responseArea.setWrapStyleWord(true);
         responseArea.setLineWrap(true);
         responseArea.setEditable(false);
@@ -90,6 +90,9 @@ public class ChatGPTWidget {
         JButton returnButton = new JButton("Return");
         returnButton.setBounds(660, 600, 130, 35);
         frame.add(returnButton);
+
+        frame.add(panel);
+        frame.setVisible(true);
 
         submitButton.addActionListener(new ActionListener() {
 
@@ -112,17 +115,10 @@ public class ChatGPTWidget {
 
                 if (e.getSource() == returnButton){
                     new WelcomePage("again");
+                    frame.dispose();
                 }
-
-
             }
         });
-
-
-        frame.add(panel);
-        frame.setVisible(true);
-
-
     }
 }
 
