@@ -6,6 +6,7 @@ import java.awt.*;
 public class SettingsPage {
     JFrame frame = new JFrame();
 
+
     SettingsPage() {
         this.frame.setDefaultCloseOperation(3);
         this.frame.setExtendedState(6);

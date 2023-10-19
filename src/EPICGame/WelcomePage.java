@@ -53,8 +53,8 @@ public class WelcomePage {
         settingsButton.setBounds(760, 600, 100, 35);
         this.frame.add(settingsButton);
 
-        this.frame.setDefaultCloseOperation(3);
-        this.frame.setExtendedState(6);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.frame.setLayout((LayoutManager)null);
         this.frame.setVisible(true);
 
