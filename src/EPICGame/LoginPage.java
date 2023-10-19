@@ -6,11 +6,7 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class LoginPage implements ActionListener {
     IDandPasswords idandPasswords = new IDandPasswords();
@@ -24,31 +20,41 @@ public class LoginPage implements ActionListener {
     JLabel userPasswordLabel = new JLabel("Password:");
     JLabel signupLabel = new JLabel("Don't have an account?");
     JLabel messageLabel = new JLabel();
+    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\LoginBackground.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
     HashMap<String, String> logininfo = new HashMap();
 
     LoginPage(HashMap<String, String> loginInfoOriginal) {
+        this.frame.add(backgroundLabel);
+        this.frame.setContentPane(backgroundLabel);
+
         this.logininfo = loginInfoOriginal;
 
-        this.userIDLabel.setBounds(650, 310, 75, 25);
-        this.userPasswordLabel.setBounds(650, 360, 75, 25);
-        this.signupLabel.setBounds(750, 450, 200, 25);
+        this.userIDLabel.setBounds(600, 200, 75, 25);
+        this.userPasswordLabel.setBounds(600, 260, 75, 25);
 
-        this.messageLabel.setBounds(710, 500, 250, 35);
+        this.signupLabel.setBounds(580, 610, 500, 80);
+        this.signupLabel.setFont(new Font("Orbitron",Font.BOLD,30));
+        this.signupLabel.setForeground(new Color(0,255,255));
+
+        this.messageLabel.setBounds(660, 400, 250, 35);
         this.messageLabel.setFont(new Font((String)null, 2, 25));
 
-        this.userIDField.setBounds(720, 310, 200, 25);
+        this.userIDField.setBounds(670, 200, 200, 25);
 
-        this.userPasswordField.setBounds(720, 360, 200, 25);
+        this.userPasswordField.setBounds(670, 260, 200, 25);
 
-        this.loginButton.setBounds(720, 410, 100, 25);
+        this.loginButton.setBounds(670, 330, 100, 25);
         this.loginButton.setFocusable(false);
         this.loginButton.addActionListener(this);
 
-        this.resetButton.setBounds(820, 410, 100, 25);
+        this.resetButton.setBounds(770, 330, 100, 25);
         this.resetButton.setFocusable(false);
 
         this.resetButton.addActionListener(this);
-        this.signupButton.setBounds(720, 475, 200, 25);
+        this.signupButton.setBounds(620, 675, 300, 60);
+        this.signupButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
+        this.signupButton.setBackground(new Color(0,255,255));
         this.signupButton.setFocusable(false);
         this.signupButton.addActionListener(this);
 

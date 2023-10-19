@@ -48,6 +48,8 @@ public class TimerGame implements ActionListener{
     JLabel seconds_left = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
+    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\Time Background.PNG");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
 
     Timer timer = new Timer(1000, new ActionListener() {
 
@@ -62,9 +64,10 @@ public class TimerGame implements ActionListener{
     });
 
     public TimerGame() {
+        this.frame.add(backgroundLabel);
+        this.frame.setContentPane(backgroundLabel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.getContentPane().setBackground(new Color(128, 0, 200));
         frame.setLayout(null);
         frame.setResizable(false);
 
