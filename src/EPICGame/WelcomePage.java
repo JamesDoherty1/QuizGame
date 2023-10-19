@@ -62,21 +62,25 @@ public class WelcomePage {
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new DiscreteMaths();
+                String subject = "Discrete Maths";
+                new DifficultyLevels(subject);
+
             }
         });
 
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new ComputerOrganization();
+                String subject = "Computer Organization";
+                new DifficultyLevels(subject);
             }
         });
 
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new ComputerScience();
+                String subject = "Computer Science";
+                new DifficultyLevels(subject);
             }
         });
 

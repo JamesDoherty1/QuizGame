@@ -11,7 +11,7 @@ public class DiscreteMaths implements ActionListener {
     JFrame frame = new JFrame();
     JButton returnButton = new JButton("Return");
 
-    DiscreteMaths() {
+    DiscreteMaths(String subject, String Difficulty) {
 
         this.returnButton.setBounds(720, 410, 100, 25);
         this.returnButton.setFocusable(false);

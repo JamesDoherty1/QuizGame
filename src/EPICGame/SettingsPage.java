@@ -8,8 +8,8 @@ public class SettingsPage {
 
 
     SettingsPage() {
-        this.frame.setDefaultCloseOperation(3);
-        this.frame.setExtendedState(6);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.frame.setLayout((LayoutManager)null);
         this.frame.setVisible(true);
     }

@@ -11,7 +11,7 @@ public class ComputerScience implements ActionListener {
     JFrame frame = new JFrame();
     JButton returnButton = new JButton("Return");
 
-    ComputerScience() {
+    ComputerScience(String subject, String Difficulty) {
 
         this.returnButton.setBounds(720, 410, 100, 25);
         this.returnButton.setFocusable(false);
