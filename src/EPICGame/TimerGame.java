@@ -7,20 +7,20 @@ import javax.swing.*;
 public class TimerGame implements ActionListener{
 
     String[] questions = 	{
-            "What is 1+1?",
-            "Fill in the gap: Immersive ______ Engineering?",
-            "What year is it?",
-            "Who founded ISE?"
+            "Which company created Java?",
+            "Which year was Java created?",
+            "What was Java originally called?",
+            "Who is credited with creating Java?"
     };
     String[][] options = 	{
-            {"2","5","7","-2"},
-            {"Biochemical","Civil","Chemical","Software"},
-            {"2022","2020","2023","2032"},
-            {"Steve Jobs","Bill Gates","John Collison","Mark Zuckerburg"}
+            {"Sun Microsystems","Starbucks","Microsoft","Alphabet"},
+            {"1989","1996","1972","1492"},
+            {"Apple","Latte","Oak","Koffing"},
+            {"Steve Jobs","Bill Gates","James Gosling","Mark Zuckerburg"}
     };
     char[] answers = 		{
             'A',
-            'D',
+            'B',
             'C',
             'C'
     };
@@ -30,7 +30,7 @@ public class TimerGame implements ActionListener{
     int correct_guesses =0;
     int total_questions = questions.length;
     int result;
-    int seconds=8;
+    int seconds=10;
 
     JFrame frame = new JFrame();
     JTextField textfield = new JTextField();
@@ -62,86 +62,104 @@ public class TimerGame implements ActionListener{
 
     public TimerGame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-        frame.getContentPane().setBackground(new Color(128, 60, 250));
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.getContentPane().setBackground(new Color(128, 0, 200));
         frame.setLayout(null);
         frame.setResizable(false);
 
-        textfield.setBounds(0,0,650,50);
-        textfield.setBackground(new Color(255, 0, 180));
-        textfield.setForeground(new Color(0,180,235));
-        textfield.setFont(new Font("Orbitron",Font.BOLD,3));
+        textfield.setBounds(460,0,650,50);
+        textfield.setBackground(new Color(0,255,255));
+        textfield.setForeground(new Color(0,0,0));
+        textfield.setFont(new Font("Orbitron",Font.BOLD,30));
+        textfield.setBorder(BorderFactory.createBevelBorder(1));
         textfield.setHorizontalAlignment(JTextField.CENTER);
         textfield.setEditable(false);
 
-        textarea.setBounds(0,50,650,50);
+        textarea.setBounds(460,50,650,50);
         textarea.setLineWrap(true);
-        textarea.setBackground(new Color(255,0,180));
-        textarea.setForeground(new Color(0,180,235));
-        textfield.setFont(new Font("Orbitron",Font.BOLD,30));
+        textarea.setWrapStyleWord(true);
+        textarea.setBackground(new Color(25,25,25));
+        textarea.setForeground(new Color(0,255,255));
+        textarea.setFont(new Font("Orbitron",Font.BOLD,25));
         textarea.setBorder(BorderFactory.createBevelBorder(1));
         textarea.setEditable(false);
 
-        buttonA.setBounds(0,100,100,100);
+        buttonA.setBounds(460,150,100,100);
+        buttonA.setFont(new Font("Orbitron",Font.BOLD,35));
+        buttonA.setBackground(new Color(0,255,255));
         buttonA.setFocusable(false);
         buttonA.addActionListener(this);
         buttonA.setText("A");
 
-        buttonB.setBounds(0,200,100,100);
+        buttonB.setBounds(460,250,100,100);
+        buttonB.setFont(new Font("Orbitron",Font.BOLD,35));
+        buttonB.setBackground(new Color(0,255,255));
         buttonB.setFocusable(false);
         buttonB.addActionListener(this);
         buttonB.setText("B");
 
-        buttonC.setBounds(0,300,100,100);
+        buttonC.setBounds(460,350,100,100);
+        buttonC.setFont(new Font("Orbitron",Font.BOLD,35));
+        buttonC.setBackground(new Color(0,255,255));
         buttonC.setFocusable(false);
         buttonC.addActionListener(this);
         buttonC.setText("C");
 
-        buttonD.setBounds(0,400,100,100);
+        buttonD.setBounds(460,450,100,100);
+        buttonD.setFont(new Font("Orbitron",Font.BOLD,35));
+        buttonD.setBackground(new Color(0,255,255));
         buttonD.setFocusable(false);
         buttonD.addActionListener(this);
         buttonD.setText("D");
 
-        answer_labelA.setBounds(125,100,500,100);
+        answer_labelA.setBounds(585,150,500,100);
         answer_labelA.setBackground(new Color(50,50,50));
         answer_labelA.setForeground(new Color(25,255,0));
+        answer_labelA.setFont(new Font("Orbitron",Font.PLAIN,35));
 
-        answer_labelB.setBounds(125,200,500,100);
+        answer_labelB.setBounds(585,250,500,100);
         answer_labelB.setBackground(new Color(50,50,50));
         answer_labelB.setForeground(new Color(25,255,0));
+        answer_labelB.setFont(new Font("Orbitron",Font.PLAIN,35));
 
-        answer_labelC.setBounds(125,300,500,100);
+        answer_labelC.setBounds(585,350,500,100);
         answer_labelC.setBackground(new Color(50,50,50));
         answer_labelC.setForeground(new Color(25,255,0));
+        answer_labelC.setFont(new Font("Orbitron",Font.PLAIN,35));
 
-        answer_labelD.setBounds(125,400,500,100);
+        answer_labelD.setBounds(585,450,500,100);
         answer_labelD.setBackground(new Color(50,50,50));
         answer_labelD.setForeground(new Color(25,255,0));
+        answer_labelD.setFont(new Font("Orbitron",Font.PLAIN,35));
 
-        seconds_left.setBounds(1000,700,100,100);
-        seconds_left.setBackground(new Color(255,0,180));
-        seconds_left.setForeground(new Color(0,180,235));
+        seconds_left.setBounds(1334,640,200,200);
+        seconds_left.setBackground(new Color(0,255,255));
+        seconds_left.setForeground(new Color(255,0,0));
+        seconds_left.setFont(new Font("Orbitron",Font.BOLD,60));
         seconds_left.setBorder(BorderFactory.createBevelBorder(1));
         seconds_left.setOpaque(true);
         seconds_left.setHorizontalAlignment(JTextField.CENTER);
         seconds_left.setText(String.valueOf(seconds));
 
-        time_label.setBounds(1000,650,100,25);
+        time_label.setBounds(1334,640,200,50);
         time_label.setBackground(new Color(50,50,50));
         time_label.setForeground(new Color(255,0,0));
+        time_label.setFont(new Font("Orbitron",Font.PLAIN,16));
         time_label.setHorizontalAlignment(JTextField.CENTER);
-        time_label.setText("timer");
+        time_label.setText("Timer");
 
-        number_right.setBounds(225,225,200,100);
+        number_right.setBounds(675,225,200,100);
         number_right.setBackground(new Color(25,25,25));
         number_right.setForeground(new Color(25,255,0));
+        number_right.setFont(new Font("Orbitron",Font.BOLD,50));
         number_right.setBorder(BorderFactory.createBevelBorder(1));
         number_right.setHorizontalAlignment(JTextField.CENTER);
         number_right.setEditable(false);
 
-        percentage.setBounds(225,325,200,100);
+        percentage.setBounds(675,325,200,100);
         percentage.setBackground(new Color(25,25,25));
         percentage.setForeground(new Color(25,255,0));
+        percentage.setFont(new Font("Orbitron",Font.BOLD,50));
         percentage.setBorder(BorderFactory.createBevelBorder(1));
         percentage.setHorizontalAlignment(JTextField.CENTER);
         percentage.setEditable(false);
@@ -259,6 +277,11 @@ public class TimerGame implements ActionListener{
         buttonB.setEnabled(false);
         buttonC.setEnabled(false);
         buttonD.setEnabled(false);
+
+        buttonA.setVisible(false);
+        buttonB.setVisible(false);
+        buttonC.setVisible(false);
+        buttonD.setVisible(false);
 
         result = (int)((correct_guesses/(double)total_questions)*100);
 
