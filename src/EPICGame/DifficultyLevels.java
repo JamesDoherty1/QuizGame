@@ -88,6 +88,14 @@ public class DifficultyLevels{
                 }
             }
         });
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource() == returnButton){
+                    new WelcomePage("again");
+                }
+            }
+        });
     }}
 
 

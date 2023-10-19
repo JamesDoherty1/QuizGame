@@ -39,6 +39,7 @@ public class TimerGame implements ActionListener{
     JButton buttonB = new JButton();
     JButton buttonC = new JButton();
     JButton buttonD = new JButton();
+    JButton returnButton = new JButton();
     JLabel answer_labelA = new JLabel();
     JLabel answer_labelB = new JLabel();
     JLabel answer_labelC = new JLabel();
@@ -112,30 +113,37 @@ public class TimerGame implements ActionListener{
         buttonD.addActionListener(this);
         buttonD.setText("D");
 
+        returnButton.setBounds(625,650,300,80);
+        returnButton.setFont(new Font("Orbitron",Font.BOLD,35));
+        returnButton.setBackground(new Color(0,255,255));
+        returnButton.setFocusable(false);
+        returnButton.addActionListener(this);
+        returnButton.setText("Return");
+
         answer_labelA.setBounds(585,150,500,100);
         answer_labelA.setBackground(new Color(50,50,50));
         answer_labelA.setForeground(new Color(25,255,0));
-        answer_labelA.setFont(new Font("Orbitron",Font.PLAIN,35));
+        answer_labelA.setFont(new Font("Black Ops One",Font.PLAIN,35));
 
         answer_labelB.setBounds(585,250,500,100);
         answer_labelB.setBackground(new Color(50,50,50));
         answer_labelB.setForeground(new Color(25,255,0));
-        answer_labelB.setFont(new Font("Orbitron",Font.PLAIN,35));
+        answer_labelB.setFont(new Font("Black Ops One",Font.PLAIN,35));
 
         answer_labelC.setBounds(585,350,500,100);
         answer_labelC.setBackground(new Color(50,50,50));
         answer_labelC.setForeground(new Color(25,255,0));
-        answer_labelC.setFont(new Font("Orbitron",Font.PLAIN,35));
+        answer_labelC.setFont(new Font("Black Ops One",Font.PLAIN,35));
 
         answer_labelD.setBounds(585,450,500,100);
         answer_labelD.setBackground(new Color(50,50,50));
         answer_labelD.setForeground(new Color(25,255,0));
-        answer_labelD.setFont(new Font("Orbitron",Font.PLAIN,35));
+        answer_labelD.setFont(new Font("Black Ops One",Font.PLAIN,35));
 
         seconds_left.setBounds(1334,640,200,200);
         seconds_left.setBackground(new Color(0,255,255));
         seconds_left.setForeground(new Color(255,0,0));
-        seconds_left.setFont(new Font("Orbitron",Font.BOLD,60));
+        seconds_left.setFont(new Font("Black Ops One",Font.BOLD,60));
         seconds_left.setBorder(BorderFactory.createBevelBorder(1));
         seconds_left.setOpaque(true);
         seconds_left.setHorizontalAlignment(JTextField.CENTER);
@@ -144,7 +152,7 @@ public class TimerGame implements ActionListener{
         time_label.setBounds(1334,640,200,50);
         time_label.setBackground(new Color(50,50,50));
         time_label.setForeground(new Color(255,0,0));
-        time_label.setFont(new Font("Orbitron",Font.PLAIN,16));
+        time_label.setFont(new Font("Black Ops One",Font.PLAIN,16));
         time_label.setHorizontalAlignment(JTextField.CENTER);
         time_label.setText("Timer");
 
@@ -176,6 +184,9 @@ public class TimerGame implements ActionListener{
         frame.add(buttonD);
         frame.add(textarea);
         frame.add(textfield);
+        frame.add(returnButton);
+        returnButton.setVisible(false);
+        returnButton.setEnabled(false);
         frame.setVisible(true);
 
         nextQuestion();
@@ -295,8 +306,20 @@ public class TimerGame implements ActionListener{
         number_right.setText("("+correct_guesses+"/"+total_questions+")");
         percentage.setText(result+"%");
 
+        returnButton.setVisible(true);
+        returnButton.setEnabled(true);
         frame.add(number_right);
         frame.add(percentage);
+
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource() == returnButton){
+                    frame.dispose();
+                    new WelcomePage("again");
+                }
+            }
+        });
 
     }
 }

@@ -11,46 +11,76 @@ public class WelcomePage {
     JFrame frame = new JFrame();
     JLabel welcomeLabel = new JLabel("Hello and Welcome!");
     JLabel loginSuccess = new JLabel("Login Success");
+    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\RetroGamingBackground.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
+
 
     WelcomePage(String userID) {
-        this.welcomeLabel.setBounds(590, 50, 500, 35);
+
+        this.frame.add(backgroundLabel);
+        this.frame.setContentPane(backgroundLabel);
+
+        this.welcomeLabel.setBounds(360, 40, 1000, 80);
         this.welcomeLabel.setFont(new Font((String)null, 0, 25));
+        this.welcomeLabel.setForeground(new Color(20,255,255));
+        this.welcomeLabel.setFont(new Font("Orbitron",Font.BOLD,50));
         this.welcomeLabel.setText("Hello " + userID + ", Welcome to the Quiz!");
         this.frame.add(this.welcomeLabel);
 
-        this.loginSuccess.setBounds(670, 650, 500, 35);
+        this.loginSuccess.setBounds(660, 715, 500, 35);
         this.loginSuccess.setFont(new Font((String)null, 2, 25));
+        this.loginSuccess.setFont(new Font("Orbitron",Font.PLAIN,30));
         this.loginSuccess.setText("Login Success");
         this.loginSuccess.setForeground(Color.green);
         this.frame.add(this.loginSuccess);
 
-
         JButton button1 = new JButton("Discrete Maths");
-        button1.setBounds(660, 300, 200, 35);
+        button1.setBounds(640, 200, 300, 60);
+        button1.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button1.setBackground(new Color(0,255,255));
+        button1.setFocusable(false);
         this.frame.add(button1);
 
         JButton button2 = new JButton("Computer Organization");
-        button2.setBounds(660, 350, 200, 35);
+        button2.setBounds(640, 280, 300, 60);
+        button2.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button2.setBackground(new Color(0,255,255));
+        button2.setFocusable(false);
         this.frame.add(button2);
 
         JButton button3 = new JButton("Computer Science");
-        button3.setBounds(660, 400, 200, 35);
+        button3.setBounds(640, 360, 300, 60);
+        button3.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button3.setBackground(new Color(0,255,255));
+        button3.setFocusable(false);
         this.frame.add(button3);
 
         JButton button4 = new JButton("Timer Game");
-        button4.setBounds(660, 450, 200, 35);
+        button4.setBounds(640, 440, 300, 60);
+        button4.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button4.setBackground(new Color(0,255,255));
+        button4.setFocusable(false);
         this.frame.add(button4);
 
-        JButton button5 = new JButton("Chat GPT");
-        button5.setBounds(660, 500, 200, 35);
+        JButton button5 = new JButton("Ask Me Anything!");
+        button5.setBounds(640, 520, 300, 60);
+        button5.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button5.setBackground(new Color(0,255,255));
+        button5.setFocusable(false);
         this.frame.add(button5);
 
         JButton logoutButton = new JButton("Logout");
-        logoutButton.setBounds(660, 600, 100, 35);
+        logoutButton.setBounds(640, 650, 150, 50);
+        logoutButton.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        logoutButton.setBackground(new Color(0,255,255));
+        logoutButton.setFocusable(false);
         this.frame.add(logoutButton);
 
         JButton settingsButton = new JButton("Settings");
-        settingsButton.setBounds(760, 600, 100, 35);
+        settingsButton.setBounds(790, 650, 150, 50);
+        settingsButton.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        settingsButton.setBackground(new Color(0,255,255));
+        settingsButton.setFocusable(false);
         this.frame.add(settingsButton);
 
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
