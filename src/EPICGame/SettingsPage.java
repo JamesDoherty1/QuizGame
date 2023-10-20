@@ -6,7 +6,6 @@ import java.awt.*;
 public class SettingsPage {
     JFrame frame = new JFrame();
 
-
     SettingsPage() {
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

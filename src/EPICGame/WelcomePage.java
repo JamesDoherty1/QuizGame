@@ -36,49 +36,49 @@ public class WelcomePage {
 
         JButton button1 = new JButton("Discrete Maths");
         button1.setBounds(640, 200, 300, 60);
-        button1.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button1.setFont(new Font("Black Ops One",Font.PLAIN,25));
         button1.setBackground(new Color(0,255,255));
         button1.setFocusable(false);
         this.frame.add(button1);
 
         JButton button2 = new JButton("Computer Organization");
         button2.setBounds(640, 280, 300, 60);
-        button2.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button2.setFont(new Font("Black Ops One",Font.PLAIN,20));
         button2.setBackground(new Color(0,255,255));
         button2.setFocusable(false);
         this.frame.add(button2);
 
         JButton button3 = new JButton("Computer Science");
         button3.setBounds(640, 360, 300, 60);
-        button3.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button3.setFont(new Font("Black Ops One",Font.PLAIN,25));
         button3.setBackground(new Color(0,255,255));
         button3.setFocusable(false);
         this.frame.add(button3);
 
         JButton button4 = new JButton("Timer Game");
         button4.setBounds(640, 440, 300, 60);
-        button4.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button4.setFont(new Font("Black Ops One",Font.PLAIN,25));
         button4.setBackground(new Color(0,255,255));
         button4.setFocusable(false);
         this.frame.add(button4);
 
         JButton button5 = new JButton("Ask Me Anything!");
         button5.setBounds(640, 520, 300, 60);
-        button5.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        button5.setFont(new Font("Black Ops One",Font.PLAIN,25));
         button5.setBackground(new Color(0,255,255));
         button5.setFocusable(false);
         this.frame.add(button5);
 
         JButton logoutButton = new JButton("Logout");
         logoutButton.setBounds(640, 650, 150, 50);
-        logoutButton.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        logoutButton.setFont(new Font("Black Ops One",Font.PLAIN,18));
         logoutButton.setBackground(new Color(0,255,255));
         logoutButton.setFocusable(false);
         this.frame.add(logoutButton);
 
         JButton settingsButton = new JButton("Settings");
         settingsButton.setBounds(790, 650, 150, 50);
-        settingsButton.setFont(new Font("Black Ops One",Font.PLAIN,15));
+        settingsButton.setFont(new Font("Black Ops One",Font.PLAIN,18));
         settingsButton.setBackground(new Color(0,255,255));
         settingsButton.setFocusable(false);
         this.frame.add(settingsButton);

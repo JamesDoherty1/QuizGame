@@ -1,10 +1,9 @@
 package EPICGame;
 
-import java.awt.LayoutManager;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 
 public class DifficultyLevels{
@@ -13,20 +12,32 @@ public class DifficultyLevels{
     JButton hardButton = new JButton("Hard");
     JButton mediumButton = new JButton("Medium");
     JButton easyButton = new JButton("Easy");
+    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\DifficultyLevelBackground.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
 
     DifficultyLevels(String subject) {
+        this.frame.add(backgroundLabel);
+        this.frame.setContentPane(backgroundLabel);
 
-        this.returnButton.setBounds(750, 600, 100, 25);
+        this.returnButton.setBounds(700, 650, 200, 70);
         this.returnButton.setFocusable(false);
+        this.returnButton.setFont(new Font("Black Ops One",Font.PLAIN,30));
+        this.returnButton.setBackground(new Color(0,255,255));
 
-        this.hardButton.setBounds(650, 500, 300, 40);
+        this.hardButton.setBounds(650, 400, 300, 80);
         this.hardButton.setFocusable(false);
+        this.hardButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
+        this.hardButton.setBackground(new Color(255,0,0));
 
-        this.mediumButton.setBounds(650, 350, 300, 40);
+        this.mediumButton.setBounds(650, 250, 300, 80);
         this.mediumButton.setFocusable(false);
+        this.mediumButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
+        this.mediumButton.setBackground(new Color(255,130,0));
 
-        this.easyButton.setBounds(650, 200, 300, 40);
+        this.easyButton.setBounds(650, 100, 300, 80);
         this.easyButton.setFocusable(false);
+        this.easyButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
+        this.easyButton.setBackground(new Color(0,255,0));
 
         this.frame.add(this.returnButton);
         this.frame.add(this.hardButton);
