@@ -1,6 +1,6 @@
 package EPICGame;
 
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -9,41 +9,54 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class ChatGPTWidget {
     JFrame frame = new JFrame("ChatGPT Widget");
-    JPanel panel = new JPanel();
     JLabel instructionLabel = new JLabel("Enter your search query:");
     JTextField inputField = new JTextField(20);
     JButton submitButton = new JButton("Submit");
     JTextArea responseArea = new JTextArea(10, 60);
     JButton returnButton = new JButton("Return");
+    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\ChatGPTBackground.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
+
 
     ChatGPTWidget() {
+        frame.add(backgroundLabel);
+        frame.setContentPane(backgroundLabel);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        panel.setLayout(new FlowLayout());
-        panel.add(instructionLabel);
-        panel.add(inputField);
-        panel.add(submitButton);
-        panel.add(new JScrollPane(responseArea));
+        instructionLabel.setBounds(260, 45, 400, 40);
+        instructionLabel.setForeground(new Color(0,255,255));
+        instructionLabel.setFont(new Font("Orbitron",Font.BOLD,25));
+
+        submitButton.setBounds(940,40,150,50);
+        submitButton.setBackground(new Color(0,255,255));
+        submitButton.setFont(new Font("Black Ops One",Font.PLAIN,30));
 
         responseArea.setWrapStyleWord(true);
         responseArea.setLineWrap(true);
         responseArea.setEditable(false);
+        responseArea.setBounds(525, 120,500,550);
+        responseArea.setBackground(new Color(128, 0, 255));
+        responseArea.setFont(new Font("Black Ops One",Font.PLAIN,15));
 
-        returnButton.setBounds(660, 600, 130, 35);
+        inputField.setBounds(630, 40,300,50);
+        inputField.setBackground(new Color(0,255,255));
+        inputField.setFont(new Font("Black Ops One",Font.PLAIN,15));
 
+        returnButton.setBounds(660, 700, 200, 50);
+        returnButton.setBackground(new Color(0,255,255));
+        returnButton.setFont(new Font("Black Ops One",Font.PLAIN,30));
+
+        frame.add(instructionLabel);
+        frame.add(inputField);
+        frame.add(submitButton);
+        frame.add(responseArea);
         frame.add(returnButton);
-        frame.add(panel);
         frame.setVisible(true);
 
         submitButton.addActionListener(new ActionListener() {
