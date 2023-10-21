@@ -43,25 +43,26 @@ public class LoginPage implements ActionListener {
         this.signupLabel.setFont(new Font("Orbitron",Font.BOLD,30));
         this.signupLabel.setForeground(new Color(0,255,255));
 
-        this.messageLabel.setBounds(660, 400, 250, 35);
+        this.messageLabel.setBounds(700, 390, 300, 35);
         this.messageLabel.setFont(new Font((String)null, 2, 25));
+        this.messageLabel.setFont(new Font("Orbitron",Font.BOLD,20));
 
-        this.userIDField.setBounds(670, 205, 300, 60);
+        this.userIDField.setBounds(670, 210, 300, 50);
         this.userIDField.setBackground(new Color(0,255,255));
         this.userIDField.setFont(new Font("Black Ops One",Font.PLAIN,20));
 
-        this.userPasswordField.setBounds(670, 305, 300, 60);
+        this.userPasswordField.setBounds(670, 310, 300, 50);
         this.userPasswordField.setBackground(new Color(0,255,255));
         this.userPasswordField.setFont(new Font("Black Ops One",Font.PLAIN,20));
 
         this.loginButton.setBounds(570, 450, 200, 50);
-        this.loginButton.setFont(new Font("Black Ops One",Font.PLAIN,20));
+        this.loginButton.setFont(new Font("Black Ops One",Font.PLAIN,30));
         this.loginButton.setBackground(new Color(0,255,255));
         this.loginButton.setFocusable(false);
         this.loginButton.addActionListener(this);
 
         this.resetButton.setBounds(770, 450, 200, 50);
-        this.resetButton.setFont(new Font("Black Ops One",Font.PLAIN,20));
+        this.resetButton.setFont(new Font("Black Ops One",Font.PLAIN,30));
         this.resetButton.setBackground(new Color(0,255,255));
         this.resetButton.setFocusable(false);
         this.resetButton.addActionListener(this);
@@ -103,11 +104,11 @@ public class LoginPage implements ActionListener {
                     new WelcomePage(userID);
                 } else {
                     this.messageLabel.setForeground(Color.red);
-                    this.messageLabel.setText("Wrong password");
+                    this.messageLabel.setText("Wrong password!");
                 }
             } else {
                 this.messageLabel.setForeground(Color.red);
-                this.messageLabel.setText("Username not found");
+                this.messageLabel.setText("Username not found!");
             }
         }
 

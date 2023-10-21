@@ -71,14 +71,14 @@ public class WelcomePage {
 
         JButton logoutButton = new JButton("Logout");
         logoutButton.setBounds(640, 650, 150, 50);
-        logoutButton.setFont(new Font("Black Ops One",Font.PLAIN,18));
+        logoutButton.setFont(new Font("Black Ops One",Font.PLAIN,23));
         logoutButton.setBackground(new Color(0,255,255));
         logoutButton.setFocusable(false);
         this.frame.add(logoutButton);
 
         JButton settingsButton = new JButton("Settings");
         settingsButton.setBounds(790, 650, 150, 50);
-        settingsButton.setFont(new Font("Black Ops One",Font.PLAIN,18));
+        settingsButton.setFont(new Font("Black Ops One",Font.PLAIN,23));
         settingsButton.setBackground(new Color(0,255,255));
         settingsButton.setFocusable(false);
         this.frame.add(settingsButton);
@@ -125,7 +125,7 @@ public class WelcomePage {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button5) {
                     frame.dispose();
-                    ChatGPTWidget.main(new String[0]);
+                    new ChatGPTWidget();
                 }
 
             }

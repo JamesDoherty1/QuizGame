@@ -48,7 +48,7 @@ public class TimerGame implements ActionListener{
     JLabel seconds_left = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
-    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\Time Background.PNG");
+    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\TimerGameBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     Timer timer = new Timer(1000, new ActionListener() {
@@ -66,6 +66,7 @@ public class TimerGame implements ActionListener{
     public TimerGame() {
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(null);
@@ -121,7 +122,7 @@ public class TimerGame implements ActionListener{
         returnButton.setBackground(new Color(0,255,255));
         returnButton.setFocusable(false);
         returnButton.addActionListener(this);
-        returnButton.setText("Return");
+        returnButton.setText("Give Up");
 
         answer_labelA.setBounds(585,150,500,100);
         answer_labelA.setBackground(new Color(50,50,50));
@@ -188,8 +189,6 @@ public class TimerGame implements ActionListener{
         frame.add(textarea);
         frame.add(textfield);
         frame.add(returnButton);
-        returnButton.setVisible(false);
-        returnButton.setEnabled(false);
         frame.setVisible(true);
 
         nextQuestion();
@@ -240,6 +239,10 @@ public class TimerGame implements ActionListener{
             if(answer == answers[index]) {
                 correct_guesses++;
             }
+        }
+        if(e.getSource()==returnButton) {
+            frame.dispose();
+            new WelcomePage("again");
         }
         displayAnswer();
     }
@@ -309,20 +312,9 @@ public class TimerGame implements ActionListener{
         number_right.setText("("+correct_guesses+"/"+total_questions+")");
         percentage.setText(result+"%");
 
-        returnButton.setVisible(true);
-        returnButton.setEnabled(true);
+        returnButton.setText("Return Home");
         frame.add(number_right);
         frame.add(percentage);
-
-        returnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == returnButton){
-                    frame.dispose();
-                    new WelcomePage("again");
-                }
-            }
-        });
 
     }
 }
