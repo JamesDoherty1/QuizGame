@@ -20,6 +20,8 @@ public class LoginPage implements ActionListener {
     JLabel userIDLabel = new JLabel("Username:");
     JLabel userPasswordLabel = new JLabel("Password:");
     JLabel signupLabel = new JLabel("Don't have an account?");
+    JLabel quizGame = new JLabel("ISE Quiz Game");
+    JLabel madeBy = new JLabel("Made by: James Doherty & Naem Haq");
     JLabel messageLabel = new JLabel();
     ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\LoginBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
@@ -30,6 +32,14 @@ public class LoginPage implements ActionListener {
         this.frame.setContentPane(backgroundLabel);
 
         this.logininfo = loginInfoOriginal;
+
+        this.quizGame.setBounds(450, 30, 800, 100);
+        this.quizGame.setForeground(new Color(0,255,255));
+        this.quizGame.setFont(new Font("Black Ops One",Font.BOLD,90));
+
+        this.madeBy.setBounds(1100, 650, 800, 200);
+        this.madeBy.setForeground(new Color(255,215,0));
+        this.madeBy.setFont(new Font("Freestyle Script",Font.PLAIN,40));
 
         this.userIDLabel.setBounds(550, 210, 300, 50);
         this.userIDLabel.setForeground(new Color(0,0,0));
@@ -83,6 +93,8 @@ public class LoginPage implements ActionListener {
         this.frame.add(this.loginButton);
         this.frame.add(this.resetButton);
         this.frame.add(this.signupButton);
+        this.frame.add(this.quizGame);
+        this.frame.add(this.madeBy);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.frame.setLayout((LayoutManager)null);
