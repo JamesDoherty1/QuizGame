@@ -7,16 +7,16 @@ import javax.swing.*;
 public class TimerGame implements ActionListener{
 
     String[] questions = 	{
-            "Which company created Java?",
-            "Which year was Java created?",
-            "What was Java originally called?",
-            "Who is credited with creating Java?"
+            "What is the best course in UL",
+            "Which year is it now?",
+            "What is 5 + 5?",
+            "What is 3 x 5?"
     };
     String[][] options = 	{
-            {"Sun Microsystems","Starbucks","Microsoft","Alphabet"},
-            {"1989","1996","1972","1492"},
-            {"Apple","Latte","Oak","Koffing"},
-            {"Steve Jobs","Bill Gates","James Gosling","Mark Zuckerburg"}
+            {"ISE","CS","Business","Arts"},
+            {"2020","2023","2032","1923"},
+            {"5","15","10","25"},
+            {"16","17","15","18"}
     };
     char[] answers = 		{
             'A',

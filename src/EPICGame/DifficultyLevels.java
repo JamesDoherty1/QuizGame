@@ -14,35 +14,41 @@ public class DifficultyLevels{
     JButton easyButton = new JButton("Easy");
     ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\DifficultyLevelBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
+    JLabel headerLabel = new JLabel("How Confident Are You?");
 
     DifficultyLevels(String subject) {
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
 
-        this.returnButton.setBounds(700, 650, 200, 70);
+        this.returnButton.setBounds(700, 700, 200, 70);
         this.returnButton.setFocusable(false);
         this.returnButton.setFont(new Font("Black Ops One",Font.PLAIN,30));
         this.returnButton.setBackground(new Color(0,255,255));
 
-        this.hardButton.setBounds(650, 400, 300, 80);
+        this.hardButton.setBounds(650, 500, 300, 80);
         this.hardButton.setFocusable(false);
         this.hardButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
         this.hardButton.setBackground(new Color(255,0,0));
 
-        this.mediumButton.setBounds(650, 250, 300, 80);
+        this.mediumButton.setBounds(650, 350, 300, 80);
         this.mediumButton.setFocusable(false);
         this.mediumButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
         this.mediumButton.setBackground(new Color(255,130,0));
 
-        this.easyButton.setBounds(650, 100, 300, 80);
+        this.easyButton.setBounds(650, 200, 300, 80);
         this.easyButton.setFocusable(false);
         this.easyButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
         this.easyButton.setBackground(new Color(0,255,0));
+
+        this.headerLabel.setBounds(350, 30, 1200, 100);
+        this.headerLabel.setForeground(new Color(0,255,255));
+        this.headerLabel.setFont(new Font("Black Ops One",Font.BOLD,70));
 
         this.frame.add(this.returnButton);
         this.frame.add(this.hardButton);
         this.frame.add(this.mediumButton);
         this.frame.add(this.easyButton);
+        this.frame.add(this.headerLabel);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.frame.setLayout((LayoutManager) null);
