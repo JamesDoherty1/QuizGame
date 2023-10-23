@@ -14,16 +14,15 @@ public class WelcomePage {
 
     WelcomePage(String userID) {
         this.welcomeLabel.setBounds(590, 50, 500, 35);
-        this.welcomeLabel.setFont(new Font((String)null, 0, 25));
+        this.welcomeLabel.setFont(new Font((String) null, 0, 25));
         this.welcomeLabel.setText("Hello " + userID + ", Welcome to the Quiz!");
         this.frame.add(this.welcomeLabel);
 
         this.loginSuccess.setBounds(670, 650, 500, 35);
-        this.loginSuccess.setFont(new Font((String)null, 2, 25));
+        this.loginSuccess.setFont(new Font((String) null, 2, 25));
         this.loginSuccess.setText("Login Success");
         this.loginSuccess.setForeground(Color.green);
         this.frame.add(this.loginSuccess);
-
 
         JButton button1 = new JButton("Discrete Maths");
         button1.setBounds(660, 300, 200, 35);
@@ -53,11 +52,15 @@ public class WelcomePage {
         settingsButton.setBounds(760, 600, 100, 35);
         this.frame.add(settingsButton);
 
+
         this.frame.setDefaultCloseOperation(3);
         this.frame.setExtendedState(6);
         this.frame.setLayout((LayoutManager)null);
-        this.frame.setVisible(true);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.frame.setLayout((LayoutManager) null);
 
+        this.frame.setVisible(true);
 
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

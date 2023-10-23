@@ -33,9 +33,9 @@ public class SignupPage implements ActionListener {
         this.password1Label.setBounds(600, 360, 200, 25);
         this.password2Label.setBounds(600, 410, 200, 25);
         this.usernameMessageLabel.setBounds(650, 500, 400, 35);
-        this.usernameMessageLabel.setFont(new Font((String)null, 2, 25));
+        this.usernameMessageLabel.setFont(new Font((String) null, 2, 25));
         this.passwordMessageLabel.setBounds(650, 550, 400, 35);
-        this.passwordMessageLabel.setFont(new Font((String)null, 2, 25));
+        this.passwordMessageLabel.setFont(new Font((String) null, 2, 25));
         this.enterUsername.setBounds(720, 310, 200, 25);
         this.enterPassword1.setBounds(720, 360, 200, 25);
         this.enterPassword2.setBounds(720, 410, 200, 25);
@@ -59,7 +59,7 @@ public class SignupPage implements ActionListener {
 
         this.frame.setDefaultCloseOperation(3);
         this.frame.setExtendedState(6);
-        this.frame.setLayout((LayoutManager)null);
+        this.frame.setLayout((LayoutManager) null);
         this.frame.setVisible(true);
     }
 
@@ -95,4 +95,3 @@ public class SignupPage implements ActionListener {
 
     }
 }
-

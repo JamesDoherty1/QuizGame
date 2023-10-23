@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-
 public class ComputerScience implements ActionListener {
     JFrame frame = new JFrame();
     JButton returnButton = new JButton("Return");
@@ -32,4 +31,3 @@ public class ComputerScience implements ActionListener {
         }
     }
 }
-

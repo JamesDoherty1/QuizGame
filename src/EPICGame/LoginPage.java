@@ -34,7 +34,7 @@ public class LoginPage implements ActionListener {
         this.signupLabel.setBounds(750, 450, 200, 25);
 
         this.messageLabel.setBounds(710, 500, 250, 35);
-        this.messageLabel.setFont(new Font((String)null, 2, 25));
+        this.messageLabel.setFont(new Font((String) null, 2, 25));
 
         this.userIDField.setBounds(720, 310, 200, 25);
 
@@ -52,7 +52,6 @@ public class LoginPage implements ActionListener {
         this.signupButton.setFocusable(false);
         this.signupButton.addActionListener(this);
 
-
         this.frame.add(this.userIDLabel);
         this.frame.add(this.userPasswordLabel);
         this.frame.add(this.signupLabel);
@@ -64,7 +63,7 @@ public class LoginPage implements ActionListener {
         this.frame.add(this.signupButton);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.frame.setLayout((LayoutManager)null);
+        this.frame.setLayout((LayoutManager) null);
         this.frame.setVisible(true);
     }
 
@@ -78,7 +77,7 @@ public class LoginPage implements ActionListener {
             String userID = this.userIDField.getText();
             String password = String.valueOf(this.userPasswordField.getPassword());
             if (this.logininfo.containsKey(userID)) {
-                if (((String)this.logininfo.get(userID)).equals(password)) {
+                if (((String) this.logininfo.get(userID)).equals(password)) {
                     this.frame.dispose();
                     new WelcomePage(userID);
                 } else {

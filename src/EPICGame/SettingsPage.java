@@ -9,9 +9,8 @@ public class SettingsPage {
     SettingsPage() {
         this.frame.setDefaultCloseOperation(3);
         this.frame.setExtendedState(6);
-        this.frame.setLayout((LayoutManager)null);
+        this.frame.setLayout((LayoutManager) null);
         this.frame.setVisible(true);
     }
 
 }
-

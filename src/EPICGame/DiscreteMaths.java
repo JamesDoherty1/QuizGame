@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-
 public class DiscreteMaths implements ActionListener {
     JFrame frame = new JFrame();
     JButton returnButton = new JButton("Return");
@@ -24,7 +23,6 @@ public class DiscreteMaths implements ActionListener {
         this.frame.setVisible(true);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.returnButton) {
@@ -33,4 +31,3 @@ public class DiscreteMaths implements ActionListener {
         }
     }
 }
-
