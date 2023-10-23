@@ -11,7 +11,7 @@ public class WelcomePage {
     JFrame frame = new JFrame();
     JLabel welcomeLabel = new JLabel("Hello and Welcome!");
     JLabel loginSuccess = new JLabel("Login Success");
-    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\RetroGamingBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\WelcomePageBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
 
@@ -151,9 +151,6 @@ public class WelcomePage {
         });
     }
 
-    private void openNewPage(String pageName) {
-        JOptionPane.showMessageDialog(this.frame, "Opening " + pageName + " page.");
-    }
 
     public static void main(String[] args) {
         new WelcomePage("");
