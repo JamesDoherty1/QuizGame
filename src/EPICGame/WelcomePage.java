@@ -35,39 +35,47 @@ public class WelcomePage {
         this.frame.add(this.loginSuccess);
 
         JButton button1 = new JButton("Discrete Maths");
-        button1.setBounds(640, 200, 300, 60);
+        button1.setBounds(640, 150, 300, 60);
         button1.setFont(new Font("Black Ops One",Font.PLAIN,25));
         button1.setBackground(new Color(0,255,255));
         button1.setFocusable(false);
         this.frame.add(button1);
 
         JButton button2 = new JButton("Computer Organization");
-        button2.setBounds(640, 280, 300, 60);
+        button2.setBounds(640, 230, 300, 60);
         button2.setFont(new Font("Black Ops One",Font.PLAIN,20));
         button2.setBackground(new Color(0,255,255));
         button2.setFocusable(false);
         this.frame.add(button2);
 
         JButton button3 = new JButton("Computer Science");
-        button3.setBounds(640, 360, 300, 60);
+        button3.setBounds(640, 310, 300, 60);
         button3.setFont(new Font("Black Ops One",Font.PLAIN,25));
         button3.setBackground(new Color(0,255,255));
         button3.setFocusable(false);
         this.frame.add(button3);
 
         JButton button4 = new JButton("Timer Game");
-        button4.setBounds(640, 440, 300, 60);
+        button4.setBounds(640, 390, 300, 60);
         button4.setFont(new Font("Black Ops One",Font.PLAIN,25));
         button4.setBackground(new Color(0,255,255));
         button4.setFocusable(false);
         this.frame.add(button4);
 
+        JButton button6 = new JButton("Random Game");
+        button6.setBounds(640, 470, 300, 60);
+        button6.setFont(new Font("Black Ops One",Font.PLAIN,25));
+        button6.setBackground(new Color(0,255,255));
+        button6.setFocusable(false);
+        this.frame.add(button6);
+
         JButton button5 = new JButton("Ask Me Anything!");
-        button5.setBounds(640, 520, 300, 60);
+        button5.setBounds(640, 550, 300, 60);
         button5.setFont(new Font("Black Ops One",Font.PLAIN,25));
         button5.setBackground(new Color(0,255,255));
         button5.setFocusable(false);
         this.frame.add(button5);
+
 
         JButton logoutButton = new JButton("Logout");
         logoutButton.setBounds(640, 650, 150, 50);
@@ -126,6 +134,16 @@ public class WelcomePage {
                 if (e.getSource() == button5) {
                     frame.dispose();
                     new ChatGPTWidget();
+                }
+
+            }
+        });
+
+        button6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == button6) {
+                    frame.dispose();
+                    new RandomGame();
                 }
 
             }
