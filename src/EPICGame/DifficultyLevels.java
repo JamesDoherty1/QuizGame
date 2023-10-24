@@ -17,6 +17,7 @@ public class DifficultyLevels{
     JLabel headerLabel = new JLabel("How Confident Are You?");
 
     DifficultyLevels(String subject) {
+        //Takes in the subject that it came from, so it knows what questions to pick from
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
 
@@ -25,24 +26,24 @@ public class DifficultyLevels{
         this.returnButton.setFont(new Font("Black Ops One",Font.PLAIN,30));
         this.returnButton.setBackground(new Color(0,255,255));
 
-        this.hardButton.setBounds(650, 500, 300, 80);
-        this.hardButton.setFocusable(false);
-        this.hardButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
-        this.hardButton.setBackground(new Color(255,0,0));
+        hardButton.setBounds(650, 500, 300, 80);
+        hardButton.setFocusable(false);
+        hardButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
+        hardButton.setBackground(new Color(255,0,0));
 
-        this.mediumButton.setBounds(650, 350, 300, 80);
-        this.mediumButton.setFocusable(false);
-        this.mediumButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
-        this.mediumButton.setBackground(new Color(255,130,0));
+        mediumButton.setBounds(650, 350, 300, 80);
+        mediumButton.setFocusable(false);
+        mediumButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
+        mediumButton.setBackground(new Color(255,130,0));
 
-        this.easyButton.setBounds(650, 200, 300, 80);
-        this.easyButton.setFocusable(false);
-        this.easyButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
-        this.easyButton.setBackground(new Color(0,255,0));
+        easyButton.setBounds(650, 200, 300, 80);
+        easyButton.setFocusable(false);
+        easyButton.setFont(new Font("Black Ops One",Font.PLAIN,40));
+        easyButton.setBackground(new Color(0,255,0));
 
-        this.headerLabel.setBounds(350, 30, 1200, 100);
-        this.headerLabel.setForeground(new Color(0,255,255));
-        this.headerLabel.setFont(new Font("Black Ops One",Font.BOLD,70));
+        headerLabel.setBounds(350, 30, 1200, 100);
+        headerLabel.setForeground(new Color(0,255,255));
+        headerLabel.setFont(new Font("Black Ops One",Font.BOLD,70));
 
         this.frame.add(this.returnButton);
         this.frame.add(this.hardButton);
@@ -70,6 +71,7 @@ public class DifficultyLevels{
                     new ComputerScience(Difficulty, subject);
                 }
             }
+            //It passes the subject it came from and difficulty as a String
         });
         mediumButton.addActionListener(new ActionListener() {
             @Override
@@ -87,6 +89,7 @@ public class DifficultyLevels{
                     new ComputerScience(Difficulty, subject);
                 }
             }
+            //It passes the subject it came from and difficulty as a String
         });
         easyButton.addActionListener(new ActionListener() {
             @Override
@@ -104,12 +107,14 @@ public class DifficultyLevels{
                     new ComputerScience(Difficulty, subject);
                 }
             }
+            //It passes the subject it came from and difficulty as a String
         });
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == returnButton){
                     new WelcomePage("again");
+                    //Send again as the String to WelcomePage constructor when it opens
                 }
             }
         });

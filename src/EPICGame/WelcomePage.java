@@ -16,23 +16,25 @@ public class WelcomePage {
 
 
     WelcomePage(String userID) {
+        //This constructor takes in String userID
 
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
+        //Set background as backgroundLable to fill the whole page
 
-        this.welcomeLabel.setBounds(360, 40, 1000, 80);
-        this.welcomeLabel.setFont(new Font((String)null, 0, 25));
-        this.welcomeLabel.setForeground(new Color(20,255,255));
-        this.welcomeLabel.setFont(new Font("Orbitron",Font.BOLD,50));
-        this.welcomeLabel.setText("Hello " + userID + ", Welcome to the Quiz!");
+        welcomeLabel.setBounds(360, 40, 1000, 80);
+        welcomeLabel.setFont(new Font((String)null, 0, 25));
+        welcomeLabel.setForeground(new Color(20,255,255));
+        welcomeLabel.setFont(new Font("Orbitron",Font.BOLD,50));
+        welcomeLabel.setText("Hello " + userID + ", Welcome to the Quiz!");
         this.frame.add(this.welcomeLabel);
 
-        this.loginSuccess.setBounds(660, 715, 500, 35);
-        this.loginSuccess.setFont(new Font((String)null, 2, 25));
-        this.loginSuccess.setFont(new Font("Orbitron",Font.PLAIN,30));
-        this.loginSuccess.setText("Login Success");
-        this.loginSuccess.setForeground(Color.green);
-        this.frame.add(this.loginSuccess);
+        loginSuccess.setBounds(660, 715, 500, 35);
+        loginSuccess.setFont(new Font((String)null, 2, 25));
+        loginSuccess.setFont(new Font("Orbitron",Font.PLAIN,30));
+        loginSuccess.setText("Login Success");
+        loginSuccess.setForeground(Color.green);
+        frame.add(this.loginSuccess);
 
         JButton button1 = new JButton("Discrete Maths");
         button1.setBounds(640, 150, 300, 60);
@@ -102,6 +104,7 @@ public class WelcomePage {
                 frame.dispose();
                 String subject = "Discrete Maths";
                 new DifficultyLevels(subject);
+                //Open Difficulty Levels and tell it its coming from Discrete Maths
 
             }
         });
@@ -111,6 +114,7 @@ public class WelcomePage {
                 frame.dispose();
                 String subject = "Computer Organization";
                 new DifficultyLevels(subject);
+                //Open Difficulty Levels and tell it its coming from Comp Org
             }
         });
 
@@ -119,6 +123,7 @@ public class WelcomePage {
                 frame.dispose();
                 String subject = "Computer Science";
                 new DifficultyLevels(subject);
+                //Open Difficulty Levels and tell it its coming from Comp Sci
             }
         });
 
@@ -126,6 +131,7 @@ public class WelcomePage {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new TimerGame();
+                //Open Timer Game Constructor
             }
         });
 
@@ -134,6 +140,7 @@ public class WelcomePage {
                 if (e.getSource() == button5) {
                     frame.dispose();
                     new ChatGPTWidget();
+                    //Open ChatGPT constructor page
                 }
 
             }
@@ -144,6 +151,7 @@ public class WelcomePage {
                 if (e.getSource() == button6) {
                     frame.dispose();
                     new RandomGame();
+                    //Open RandomGame constructor
                 }
 
             }
@@ -155,6 +163,7 @@ public class WelcomePage {
                 if (e.getSource() == logoutButton) {
                     frame.dispose();
                     new LoginPage(this.idandPasswords.getLoginInfo());
+                    //Keep Passing ID and Passowords
                 }
 
             }
@@ -163,6 +172,7 @@ public class WelcomePage {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == settingsButton) {
                     new SettingsPage();
+                    //Open SettingsPage constructor
                 }
 
             }
@@ -173,4 +183,5 @@ public class WelcomePage {
     public static void main(String[] args) {
         new WelcomePage("");
     }
+    //From main it just opens a new WelcomePage and
 }

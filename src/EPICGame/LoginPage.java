@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 
 public class LoginPage implements ActionListener {
     IDandPasswords idandPasswords = new IDandPasswords();
@@ -28,8 +27,11 @@ public class LoginPage implements ActionListener {
     HashMap<String, String> logininfo = new HashMap();
 
     LoginPage(HashMap<String, String> loginInfoOriginal) {
+        //constructor with necessary arguments
+
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
+        //Add background as a label and set to fill the page
 
         this.logininfo = loginInfoOriginal;
 
@@ -105,6 +107,7 @@ public class LoginPage implements ActionListener {
         if (e.getSource() == this.resetButton) {
             this.userIDField.setText("");
             this.userPasswordField.setText("");
+            //re-set textbox
         }
 
         if (e.getSource() == this.loginButton) {
@@ -113,7 +116,7 @@ public class LoginPage implements ActionListener {
             if (this.logininfo.containsKey(userID)) {
                 if (((String)this.logininfo.get(userID)).equals(password)) {
                     this.frame.dispose();
-                    new WelcomePage(userID);
+                    new WelcomePage(userID); //Pass userID to use in WelcomePage
                 } else {
                     this.messageLabel.setForeground(Color.red);
                     this.messageLabel.setText("Wrong password!");
@@ -127,6 +130,7 @@ public class LoginPage implements ActionListener {
         if (e.getSource() == this.signupButton) {
             this.frame.dispose();
             new SignupPage(this.idandPasswords.getLoginInfo());
+            //Need to pass ID and Passowrd info to signup page
         }
 
     }

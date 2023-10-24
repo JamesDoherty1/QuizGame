@@ -16,20 +16,19 @@ public class SettingsPage {
 
 
     SettingsPage() {
-
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
 
-        this.settingsLabel.setBounds(610, 40, 1000, 80);
-        this.settingsLabel.setFont(new Font((String) null, 0, 25));
-        this.settingsLabel.setForeground(new Color(20, 255, 255));
-        this.settingsLabel.setFont(new Font("Orbitron", Font.BOLD, 70));
+        settingsLabel.setBounds(610, 40, 1000, 80);
+        settingsLabel.setFont(new Font((String) null, 0, 25));
+        settingsLabel.setForeground(new Color(20, 255, 255));
+        settingsLabel.setFont(new Font("Orbitron", Font.BOLD, 70));
         this.frame.add(this.settingsLabel);
 
-        this.musicLabel.setBounds(530, 210, 500, 35);
-        this.musicLabel.setFont(new Font((String) null, 2, 25));
-        this.musicLabel.setFont(new Font("Orbitron", Font.PLAIN, 30));
-        this.musicLabel.setForeground(new Color(255,215,0));
+        musicLabel.setBounds(530, 210, 500, 35);
+        musicLabel.setFont(new Font((String) null, 2, 25));
+        musicLabel.setFont(new Font("Orbitron", Font.PLAIN, 30));
+        musicLabel.setForeground(new Color(255,215,0));
         this.frame.add(this.musicLabel);
 
         JButton musicVolume = new JButton("Music Volume");
@@ -62,6 +61,7 @@ public class SettingsPage {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new WelcomePage("again");
+                //Send again as String
             }
         });
     }
@@ -69,6 +69,7 @@ public class SettingsPage {
 
     public static void main(String[] args) {
         new SettingsPage();
+        //Open SettingsPage constructor from main
     }
 }
 

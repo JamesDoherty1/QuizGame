@@ -26,6 +26,7 @@ public class SignupPage implements ActionListener {
     HashMap<String, String> logininfo = new HashMap();
 
     SignupPage(HashMap<String, String> loginInfoOriginal) {
+        //Similar to login page
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
 
@@ -95,12 +96,15 @@ public class SignupPage implements ActionListener {
         if (e.getSource() == this.returnButton) {
             this.frame.dispose();
             new LoginPage(this.idandPasswords.getLoginInfo());
+            //Need to keep passing ID and Password info
         }
 
         if (e.getSource() == this.signupButton) {
-            String username = this.enterUsername.getText();
+            String username = this.enterUsername.getText(); //Store entered username as username
             String password1 = String.valueOf(this.enterPassword1.getPassword());
             String password2 = String.valueOf(this.enterPassword2.getPassword());
+            //Store passwords as a String variable
+
             if (this.logininfo.containsKey(username)) {
                 this.usernameMessageLabel.setForeground(Color.red);
                 this.usernameMessageLabel.setBounds(655, 470, 400, 35);
