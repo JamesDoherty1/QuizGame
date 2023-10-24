@@ -23,6 +23,7 @@ public class ChatGPTWidget {
 
 
     ChatGPTWidget() {
+        //Designing the JFrame the same as the other pages
         frame.add(backgroundLabel);
         frame.setContentPane(backgroundLabel);
 
@@ -91,8 +92,10 @@ public class ChatGPTWidget {
             String url = "https://api.openai.com/v1/chat/completions";
             String apiKey = "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";
             String model = "gpt-3.5-turbo";
+            //Creating variables for the url, api and model
 
-            try {
+            try {//try and catch used incase mistakes happen
+
                 URL object = new URL(url); //Creates a URL from url
                 HttpURLConnection connection = (HttpURLConnection) object.openConnection(); //Established a connection to the URL
 
@@ -121,6 +124,7 @@ public class ChatGPTWidget {
                 return extractMessageFromJSONResponse(response.toString());
             } catch (IOException var11) {
                 throw new RuntimeException(var11);
+                //Incase an IOException happens
             }
         }
 
@@ -131,5 +135,5 @@ public class ChatGPTWidget {
         } //Parses a JSON response string and specifically extract the value associated with the "content" field.
 
     public static void main (String[] args) {new ChatGPTWidget();}
-
+        //From main it opens a new ChatGPTWidget constructor
 }
