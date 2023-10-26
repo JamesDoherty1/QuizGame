@@ -24,6 +24,7 @@ public class DiscreteMaths implements ActionListener{
             'C',
             'C'
     };
+    //Defining variables
     char guess;
     char answer;
     int index;
@@ -31,6 +32,7 @@ public class DiscreteMaths implements ActionListener{
     int total_questions = questions.length;
     int result;
 
+    //Defining JFrame,Buttons and Labels
     JFrame frame = new JFrame();
     JTextField textfield = new JTextField();
     JTextArea textarea = new JTextArea();
@@ -46,16 +48,21 @@ public class DiscreteMaths implements ActionListener{
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
     ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\DiscreteMathsBackground.jpg");
+    //Creating image url as a Label
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     public DiscreteMaths(String Difficulty, String subject) {
+        //Filling the Label to fill the screen for the background
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
 
+        //Setting frame to close when X is clicked and to fill the screen
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(null);
         frame.setResizable(false);
+
+        //Setting bounds, Color, Font and ActionListeners
 
         textfield.setBounds(460,0,650,50);
         textfield.setBackground(new Color(0,255,255));
@@ -145,6 +152,7 @@ public class DiscreteMaths implements ActionListener{
         percentage.setHorizontalAlignment(JTextField.CENTER);
         percentage.setEditable(false);
 
+        //Adding to frame
         frame.add(answer_labelA);
         frame.add(answer_labelB);
         frame.add(answer_labelC);
@@ -158,13 +166,16 @@ public class DiscreteMaths implements ActionListener{
         frame.add(returnButton);
         frame.setVisible(true);
 
+        //Calling nextQuestion Function
         nextQuestion();
     }
     public void nextQuestion() {
 
+        //If all questions are showen, call results function
         if(index>=total_questions) {
             results();
         }
+        //Else show the questions
         else {
             textfield.setText("Question "+(index+1));
             textarea.setText(questions[index]);
@@ -176,12 +187,13 @@ public class DiscreteMaths implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        //Once a button is pressed, they become disabled
         buttonA.setEnabled(false);
         buttonB.setEnabled(false);
         buttonC.setEnabled(false);
         buttonD.setEnabled(false);
 
+        //If a button is pressed and is correct, correct_guesses increments
         if(e.getSource()==buttonA) {
             answer= 'A';
             if(answer == answers[index]) {
@@ -206,20 +218,22 @@ public class DiscreteMaths implements ActionListener{
                 correct_guesses++;
             }
         }
+        //If return button pressed, close current page and open Welcome Page
         if(e.getSource()==returnButton) {
             frame.dispose();
             new WelcomePage("again");
         }
+        //Call displayAnswer
         displayAnswer();
     }
     public void displayAnswer() {
-
-
+        //When displaying answer,keep buttons disabled
         buttonA.setEnabled(false);
         buttonB.setEnabled(false);
         buttonC.setEnabled(false);
         buttonD.setEnabled(false);
 
+        //If the answer is not equal to the selected one, change the color of the label to red
         if(answers[index] != 'A')
             answer_labelA.setForeground(new Color(255,0,0));
         if(answers[index] != 'B')
@@ -230,21 +244,25 @@ public class DiscreteMaths implements ActionListener{
             answer_labelD.setForeground(new Color(255,0,0));
 
         Timer pause = new Timer(2000, new ActionListener() {
-
+            //Pause for 2 seconds then resume the code
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                //Change all labels back to green
                 answer_labelA.setForeground(new Color(25,255,0));
                 answer_labelB.setForeground(new Color(25,255,0));
                 answer_labelC.setForeground(new Color(25,255,0));
                 answer_labelD.setForeground(new Color(25,255,0));
 
                 answer = ' ';
+                //Enable all buttons again
                 buttonA.setEnabled(true);
                 buttonB.setEnabled(true);
                 buttonC.setEnabled(true);
                 buttonD.setEnabled(true);
+                //Increment the index for the next question
                 index++;
+                //Calling the nextQuestion function
                 nextQuestion();
             }
         });
@@ -253,16 +271,19 @@ public class DiscreteMaths implements ActionListener{
     }
     public void results(){
 
+        //Disable all buttons
         buttonA.setEnabled(false);
         buttonB.setEnabled(false);
         buttonC.setEnabled(false);
         buttonD.setEnabled(false);
 
+        //Make them all invisible
         buttonA.setVisible(false);
         buttonB.setVisible(false);
         buttonC.setVisible(false);
         buttonD.setVisible(false);
 
+        //Calculate the result as an integer as a percentage
         result = (int)((correct_guesses/(double)total_questions)*100);
 
         textfield.setText("RESULTS!");
@@ -272,10 +293,13 @@ public class DiscreteMaths implements ActionListener{
         answer_labelC.setText("");
         answer_labelD.setText("");
 
+        //Display result as a fraction
         number_right.setText("("+correct_guesses+"/"+total_questions+")");
         percentage.setText(result+"%");
 
         returnButton.setText("Return Home");
+
+        //Add the percentage and amount correct to the frame
         frame.add(number_right);
         frame.add(percentage);
 

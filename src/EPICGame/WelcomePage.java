@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class WelcomePage {
+public class WelcomePage{
     JFrame frame = new JFrame();
     JLabel welcomeLabel = new JLabel("Hello and Welcome!");
     JLabel loginSuccess = new JLabel("Login Success");
@@ -93,6 +93,13 @@ public class WelcomePage {
         settingsButton.setFocusable(false);
         this.frame.add(settingsButton);
 
+        JButton leaderboardButton = new JButton("Leaderboard");
+        leaderboardButton.setBounds(1100, 150, 300, 60);
+        leaderboardButton.setFont(new Font("Black Ops One",Font.PLAIN,23));
+        leaderboardButton.setBackground(new Color(0,255,255));
+        leaderboardButton.setFocusable(false);
+        this.frame.add(leaderboardButton);
+
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.frame.setLayout((LayoutManager)null);
@@ -177,6 +184,16 @@ public class WelcomePage {
 
             }
         });
+        leaderboardButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == leaderboardButton) {
+                    new Leaderboard();
+                    //Open LeaderboardPage constructor
+                }
+
+            }
+        });
+
     }
 
 
