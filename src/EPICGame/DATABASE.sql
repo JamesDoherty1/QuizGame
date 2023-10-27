@@ -40,3 +40,5 @@ INSERT INTO quiz_questions (id, question, correct_answer, choice1, choice2, choi
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
+
+write a shell script that generates a random number between 1-100. The user will be prompted to guess the number. Provide feedback on whether the guess is too high or too low. continue this process until the user guesses correctly. Use the $RANDOM variable to generate random numbers. Implement a loop to allow multiple guesses. Utilise if statements for feedback
