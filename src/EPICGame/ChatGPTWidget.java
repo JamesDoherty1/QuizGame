@@ -18,7 +18,7 @@ public class ChatGPTWidget {
     JButton submitButton = new JButton("Submit");
     JTextArea responseArea = new JTextArea(10, 60);
     JButton returnButton = new JButton("Return");
-    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\ChatGPTBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\ChatGPTBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
 

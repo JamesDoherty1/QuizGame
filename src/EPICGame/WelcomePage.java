@@ -11,7 +11,7 @@ public class WelcomePage{
     JFrame frame = new JFrame();
     JLabel welcomeLabel = new JLabel("Hello and Welcome!");
     JLabel loginSuccess = new JLabel("Login Success");
-    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\WelcomePageBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\WelcomePageBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
 

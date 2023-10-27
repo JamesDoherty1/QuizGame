@@ -11,7 +11,7 @@ public class SettingsPage {
     JFrame frame = new JFrame();
     JLabel settingsLabel = new JLabel("Settings");
     JLabel musicLabel = new JLabel("Music");
-    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\SettingsPageBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\SettingsPageBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
 

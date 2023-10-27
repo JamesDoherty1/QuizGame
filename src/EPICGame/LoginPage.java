@@ -22,7 +22,7 @@ public class LoginPage implements ActionListener {
     JLabel quizGame = new JLabel("ISE Quiz Game");
     JLabel madeBy = new JLabel("Made by: James Doherty & Naem Haq");
     JLabel messageLabel = new JLabel();
-    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\LoginBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\LoginBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
     HashMap<String, String> logininfo = new HashMap();
 

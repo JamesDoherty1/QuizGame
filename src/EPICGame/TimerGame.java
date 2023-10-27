@@ -55,7 +55,7 @@ public class TimerGame implements ActionListener {
     JLabel seconds_left = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
-    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\TimerGameBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\TimerGameBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     // Timer for countdown

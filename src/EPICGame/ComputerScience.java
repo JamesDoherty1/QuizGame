@@ -50,7 +50,7 @@ public class ComputerScience implements ActionListener {
     JTextField percentage = new JTextField();
 
     // Load the background image
-    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\src\\EPICGame\\ComputerScienceBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\ComputerScienceBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     // Constructor for the ComputerScience class
