@@ -20,12 +20,13 @@ public class Leaderboard implements ActionListener {
         frame.setLocation(1094, 230);
         frame.setVisible(true);
         frame.setResizable(false);
-        this.frame.setLayout((LayoutManager) null);
+        frame.setLayout((LayoutManager) null);
 
         first.setBounds(0, 0, 300, 60);
         first.setFont(new Font("Black Ops One",Font.PLAIN,23));
         first.setBackground(new Color(20,255,255));
         first.setFocusable(false);
+        first.addActionListener(this);
         first.setText("First");
         frame.add(first);
 
@@ -33,6 +34,7 @@ public class Leaderboard implements ActionListener {
         second.setBackground(new Color(20,255,255));
         second.setFont(new Font("Black Ops One",Font.PLAIN,23));
         second.setFocusable(false);
+        second.addActionListener(this);
         second.setText("Second");
         frame.add(second);
 
@@ -40,6 +42,7 @@ public class Leaderboard implements ActionListener {
         third.setBackground(new Color(20,255,255));
         third.setFont(new Font("Black Ops One",Font.PLAIN,23));
         third.setFocusable(false);
+        third.addActionListener(this);
         third.setText("Third");
         frame.add(third);
 
@@ -47,6 +50,7 @@ public class Leaderboard implements ActionListener {
         fourth.setBackground(new Color(20,255,255));
         fourth.setFont(new Font("Black Ops One",Font.PLAIN,23));
         fourth.setFocusable(false);
+        fourth.addActionListener(this);
         fourth.setText("Fourth");
         frame.add(fourth);
 
@@ -54,6 +58,7 @@ public class Leaderboard implements ActionListener {
         fifth.setBackground(new Color(20,255,255));
         fifth.setFont(new Font("Black Ops One",Font.PLAIN,23));
         fifth.setFocusable(false);
+        fifth.addActionListener(this);
         fifth.setText("Fifth");
         frame.add(fifth);
     }
@@ -61,14 +66,20 @@ public class Leaderboard implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==first){
+            frame.dispose();
+            new LeaderboardStats();
         }
         if(e.getSource()==second){
+            new LeaderboardStats();
         }
         if(e.getSource()==third){
+            new LeaderboardStats();
         }
         if(e.getSource()==fourth){
+            new LeaderboardStats();
         }
         if(e.getSource()==fifth){
+            new LeaderboardStats();
         }
     }
 }
