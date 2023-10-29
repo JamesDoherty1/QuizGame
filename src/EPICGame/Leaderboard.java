@@ -15,9 +15,8 @@ public class Leaderboard implements ActionListener {
     JButton fifth = new JButton();
 
     Leaderboard(){
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(313, 337);
-        frame.setLocation(1094, 230);
+        frame.setLocation(1094, 235);
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setLayout((LayoutManager) null);
@@ -66,7 +65,6 @@ public class Leaderboard implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==first){
-            frame.dispose();
             new LeaderboardStats();
         }
         if(e.getSource()==second){

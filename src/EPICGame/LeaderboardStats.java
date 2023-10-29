@@ -9,11 +9,14 @@ public class LeaderboardStats{
     JLabel usernameLabel = new JLabel();
     JLabel gamesPlayedLabel = new JLabel();
     JLabel winRateLabel = new JLabel();
+    ImageIcon backgroundImage = new ImageIcon("images/LeaderboardStatsBackground.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
 
     LeaderboardStats() {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(backgroundLabel);
+        frame.setContentPane(backgroundLabel);
         frame.setSize(313, 337);
-        frame.setLocation(1094, 230);
+        frame.setLocation(1094, 235);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setLayout((LayoutManager) null);

@@ -45,7 +45,7 @@ public class RandomGame implements ActionListener{
     JLabel answer_labelD = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
-    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\RandomGameBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon ("images/RandomGameBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     public RandomGame() {

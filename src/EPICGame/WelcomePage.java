@@ -11,7 +11,7 @@ public class WelcomePage{
     JFrame frame = new JFrame();
     JLabel welcomeLabel = new JLabel("Hello and Welcome!");
     JLabel loginSuccess = new JLabel("Login Success");
-    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\WelcomePageBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/WelcomePageBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
 
@@ -94,7 +94,7 @@ public class WelcomePage{
         this.frame.add(settingsButton);
 
         JButton leaderboardButton = new JButton("Leaderboard");
-        leaderboardButton.setBounds(1100, 150, 300, 60);
+        leaderboardButton.setBounds(1100, 155, 300, 60);
         leaderboardButton.setFont(new Font("Black Ops One",Font.PLAIN,23));
         leaderboardButton.setBackground(new Color(0,255,255));
         leaderboardButton.setFocusable(false);

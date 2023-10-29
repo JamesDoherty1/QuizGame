@@ -53,7 +53,7 @@ public class ComputerOrganization implements ActionListener {
     JLabel answer_labelD = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
-    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\ComputerOrganizationBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/ComputerOrganizationBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     public ComputerOrganization(String Difficulty, String subject) {

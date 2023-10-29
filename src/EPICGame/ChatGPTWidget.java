@@ -18,7 +18,7 @@ public class ChatGPTWidget {
     JButton submitButton = new JButton("Submit");
     JTextArea responseArea = new JTextArea(10, 60);
     JButton returnButton = new JButton("Return");
-    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\ChatGPTBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon ("images/ChatGPTBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
 
@@ -90,7 +90,7 @@ public class ChatGPTWidget {
 
         public static String chatGPT (String prompt){
             String url = "https://api.openai.com/v1/chat/completions";
-            String apiKey = "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";
+            String apiKey = "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";
             String model = "gpt-3.5-turbo";
             //Creating variables for the url, api and model
 

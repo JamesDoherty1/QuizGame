@@ -19,10 +19,11 @@ public class LoginPage implements ActionListener {
     JLabel userIDLabel = new JLabel("Username:");
     JLabel userPasswordLabel = new JLabel("Password:");
     JLabel signupLabel = new JLabel("Don't have an account?");
-    JLabel quizGame = new JLabel("ISE Quiz Game");
+    JLabel quizGame1 = new JLabel("The w         wizard");
+    JLabel quizGame2 = new JLabel("ISE");
     JLabel madeBy = new JLabel("Made by: James Doherty & Naem Haq");
     JLabel messageLabel = new JLabel();
-    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\LoginBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon ("images/LoginBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
     HashMap<String, String> logininfo = new HashMap();
 
@@ -35,9 +36,13 @@ public class LoginPage implements ActionListener {
 
         this.logininfo = loginInfoOriginal;
 
-        this.quizGame.setBounds(450, 30, 800, 100);
-        this.quizGame.setForeground(new Color(0,255,255));
-        this.quizGame.setFont(new Font("Black Ops One",Font.BOLD,90));
+        this.quizGame1.setBounds(420, 30, 1000, 100);
+        this.quizGame1.setForeground(new Color(0,255,255));
+        this.quizGame1.setFont(new Font("Black Ops One",Font.PLAIN,80));
+
+        this.quizGame2.setBounds(665, 30, 1000, 100);
+        this.quizGame2.setForeground(new Color(0,180,255));
+        this.quizGame2.setFont(new Font("Black Ops One",Font.PLAIN,80));
 
         this.madeBy.setBounds(1100, 650, 800, 200);
         this.madeBy.setForeground(new Color(255,215,0));
@@ -95,7 +100,8 @@ public class LoginPage implements ActionListener {
         this.frame.add(this.loginButton);
         this.frame.add(this.resetButton);
         this.frame.add(this.signupButton);
-        this.frame.add(this.quizGame);
+        this.frame.add(this.quizGame1);
+        this.frame.add(this.quizGame2);
         this.frame.add(this.madeBy);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

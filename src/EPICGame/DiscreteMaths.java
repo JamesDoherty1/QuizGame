@@ -47,7 +47,7 @@ public class DiscreteMaths implements ActionListener{
     JLabel answer_labelD = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
-    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\DiscreteMathsBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon ("images/DiscreteMathsBackground.jpg");
     //Creating image url as a Label
     JLabel backgroundLabel = new JLabel(backgroundImage);
 

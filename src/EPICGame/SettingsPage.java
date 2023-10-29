@@ -11,7 +11,7 @@ public class SettingsPage {
     JFrame frame = new JFrame();
     JLabel settingsLabel = new JLabel("Settings");
     JLabel musicLabel = new JLabel("Music");
-    ImageIcon backgroundImage = new ImageIcon("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\SettingsPageBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/SettingsPageBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
 
@@ -31,7 +31,7 @@ public class SettingsPage {
         musicLabel.setForeground(new Color(255,215,0));
         this.frame.add(this.musicLabel);
 
-        JButton musicVolume = new JButton("Music Volume");
+        JButton musicVolume = new JButton("Mute/Unmute");
         musicVolume.setBounds(640, 200, 300, 60);
         musicVolume.setFont(new Font("Black Ops One", Font.PLAIN, 25));
         musicVolume.setBackground(new Color(0, 255, 255));

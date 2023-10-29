@@ -21,7 +21,7 @@ public class SignupPage implements ActionListener {
     JLabel password2Label = new JLabel("Re-Enter Password:");
     JLabel usernameMessageLabel = new JLabel("");
     JLabel passwordMessageLabel = new JLabel("");
-    ImageIcon backgroundImage = new ImageIcon ("C:\\Users\\jkdoh\\IdeaProjects\\EPICEndeavourGame\\images\\SignupBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon ("images/SignupBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
     HashMap<String, String> logininfo = new HashMap();
 
