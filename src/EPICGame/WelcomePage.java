@@ -200,5 +200,5 @@ public class WelcomePage{
     public static void main(String[] args) {
         new WelcomePage("");
     }
-    //From main it just opens a new WelcomePage and
+    //From main it just opens a new WelcomePage and Passes an empty String as paramenter.
 }

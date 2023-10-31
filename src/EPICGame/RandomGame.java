@@ -65,7 +65,7 @@ public class RandomGame implements ActionListener{
         textfield.setHorizontalAlignment(JTextField.CENTER);
         textfield.setEditable(false);
 
-        textarea.setBounds(460,50,650,50);
+        textarea.setBounds(460,50,650,100);
         textarea.setLineWrap(true);
         textarea.setWrapStyleWord(true);
         textarea.setBackground(new Color(25,25,25));

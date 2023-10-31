@@ -7,8 +7,9 @@ public class LeaderboardStats{
     //GUI Components
     JFrame frame = new JFrame();
     JLabel usernameLabel = new JLabel();
-    JLabel gamesPlayedLabel = new JLabel();
-    JLabel winRateLabel = new JLabel();
+    JLabel meanLabel = new JLabel();
+    JLabel medianLabel = new JLabel();
+    JLabel standardDeviationLabel = new JLabel();
     ImageIcon backgroundImage = new ImageIcon("images/LeaderboardStatsBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
@@ -21,23 +22,29 @@ public class LeaderboardStats{
         frame.setVisible(true);
         frame.setLayout((LayoutManager) null);
 
-        usernameLabel.setBounds(20, 20, 1000, 80);
+        usernameLabel.setBounds(20, 0, 1000, 80);
         usernameLabel.setForeground(new Color(20,255,255));
         usernameLabel.setFont(new Font("Orbitron",Font.BOLD,20));
         usernameLabel.setText("Username: "); //insert userID as argument
         frame.add(usernameLabel);
 
-        gamesPlayedLabel.setBounds(20, 120, 1000, 80);
-        gamesPlayedLabel.setForeground(new Color(20,255,255));
-        gamesPlayedLabel.setFont(new Font("Orbitron",Font.BOLD,20));
-        gamesPlayedLabel.setText("Games Played: "); //insert gamesPlayed as argument
-        frame.add(gamesPlayedLabel);
+        meanLabel.setBounds(20, 80, 1000, 80);
+        meanLabel.setForeground(new Color(20,255,255));
+        meanLabel.setFont(new Font("Orbitron",Font.BOLD,20));
+        meanLabel.setText("Games Played: "); //insert gamesPlayed as argument
+        frame.add(meanLabel);
 
-        winRateLabel.setBounds(20, 220, 1000, 80);
-        winRateLabel.setForeground(new Color(20,255,255));
-        winRateLabel.setFont(new Font("Orbitron",Font.BOLD,20));
-        winRateLabel.setText("Win Rate: "); //insert winRate as argument
-        frame.add(winRateLabel);
+        medianLabel.setBounds(20, 160, 1000, 80);
+        medianLabel.setForeground(new Color(20,255,255));
+        medianLabel.setFont(new Font("Orbitron",Font.BOLD,20));
+        medianLabel.setText("Win Rate: "); //insert winRate as argument
+        frame.add(medianLabel);
+
+        standardDeviationLabel.setBounds(20, 240, 1000, 80);
+        standardDeviationLabel.setForeground(new Color(20,255,255));
+        standardDeviationLabel.setFont(new Font("Orbitron",Font.BOLD,20));
+        standardDeviationLabel.setText("Win Rate: "); //insert winRate as argument
+        frame.add(standardDeviationLabel);
 
 
     }

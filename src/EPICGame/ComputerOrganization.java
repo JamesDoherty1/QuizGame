@@ -37,6 +37,13 @@ public class ComputerOrganization implements ActionListener {
     int correct_guesses = 0;
     int total_questions = questions.length;
     int result;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+    // Calculate the positions relative to the screen center
+    int centerX = screenSize.width / 2;
+    int centerY = screenSize.height / 2;
+    int buttonWidth = 100;
+    int buttonHeight = 100;
 
     // GUI components
     JFrame frame = new JFrame();
@@ -66,8 +73,7 @@ public class ComputerOrganization implements ActionListener {
         frame.setLayout(null);
         frame.setResizable(false);
 
-        // Setting up the buttons and labels
-        textfield.setBounds(460, 0, 650, 50);
+        textfield.setBounds(centerX - 325, centerY - 375, 650, 50);
         textfield.setBackground(new Color(0, 255, 255));
         textfield.setForeground(new Color(0, 0, 0));
         textfield.setFont(new Font("Orbitron", Font.BOLD, 30));
@@ -75,7 +81,7 @@ public class ComputerOrganization implements ActionListener {
         textfield.setHorizontalAlignment(JTextField.CENTER);
         textfield.setEditable(false);
 
-        textarea.setBounds(460, 50, 650, 50);
+        textarea.setBounds(centerX - 325, centerY - 325, 650, 100);
         textarea.setLineWrap(true);
         textarea.setWrapStyleWord(true);
         textarea.setBackground(new Color(25, 25, 25));
@@ -84,62 +90,62 @@ public class ComputerOrganization implements ActionListener {
         textarea.setBorder(BorderFactory.createBevelBorder(1));
         textarea.setEditable(false);
 
-        buttonA.setBounds(460, 150, 100, 100);
+        buttonA.setBounds(centerX - 325, centerY - 175, buttonWidth, buttonHeight);
         buttonA.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonA.setBackground(new Color(0, 255, 255));
         buttonA.setFocusable(false);
         buttonA.addActionListener(this);
         buttonA.setText("A");
 
-        buttonB.setBounds(460, 250, 100, 100);
+        buttonB.setBounds(centerX - 325, centerY - 75, buttonWidth, buttonHeight);
         buttonB.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonB.setBackground(new Color(0, 255, 255));
         buttonB.setFocusable(false);
         buttonB.addActionListener(this);
         buttonB.setText("B");
 
-        buttonC.setBounds(460, 350, 100, 100);
+        buttonC.setBounds(centerX - 325, centerY + 25, buttonWidth, buttonHeight);
         buttonC.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonC.setBackground(new Color(0, 255, 255));
         buttonC.setFocusable(false);
         buttonC.addActionListener(this);
         buttonC.setText("C");
 
-        buttonD.setBounds(460, 450, 100, 100);
+        buttonD.setBounds(centerX - 325, centerY + 125, buttonWidth, buttonHeight);
         buttonD.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonD.setBackground(new Color(0, 255, 255));
         buttonD.setFocusable(false);
         buttonD.addActionListener(this);
         buttonD.setText("D");
 
-        returnButton.setBounds(625, 650, 300, 80);
+        returnButton.setBounds(centerX - 150, centerY + 275, 300, 80);
         returnButton.setFont(new Font("Orbitron", Font.BOLD, 35));
         returnButton.setBackground(new Color(0, 255, 255));
         returnButton.setFocusable(false);
         returnButton.addActionListener(this);
         returnButton.setText("Give Up");
 
-        answer_labelA.setBounds(585, 150, 500, 100);
+        answer_labelA.setBounds(centerX - 215, centerY - 175, 500, 100);
         answer_labelA.setBackground(new Color(50, 50, 50));
         answer_labelA.setForeground(new Color(25, 255, 0));
         answer_labelA.setFont(new Font("Black Ops One", Font.PLAIN, 35));
 
-        answer_labelB.setBounds(585, 250, 500, 100);
+        answer_labelB.setBounds(centerX - 215, centerY - 75, 500, 100);
         answer_labelB.setBackground(new Color(50, 50, 50));
         answer_labelB.setForeground(new Color(25, 255, 0));
         answer_labelB.setFont(new Font("Black Ops One", Font.PLAIN, 35));
 
-        answer_labelC.setBounds(585, 350, 500, 100);
+        answer_labelC.setBounds(centerX - 215, centerY + 25, 500, 100);
         answer_labelC.setBackground(new Color(50, 50, 50));
         answer_labelC.setForeground(new Color(25, 255, 0));
         answer_labelC.setFont(new Font("Black Ops One", Font.PLAIN, 35));
 
-        answer_labelD.setBounds(585, 450, 500, 100);
+        answer_labelD.setBounds(centerX - 215, centerY + 125, 500, 100);
         answer_labelD.setBackground(new Color(50, 50, 50));
         answer_labelD.setForeground(new Color(25, 255, 0));
         answer_labelD.setFont(new Font("Black Ops One", Font.PLAIN, 35));
 
-        number_right.setBounds(675, 225, 200, 100);
+        number_right.setBounds(centerX + 35, centerY - 50, 200, 100);
         number_right.setBackground(new Color(25, 25, 25));
         number_right.setForeground(new Color(25, 255, 0));
         number_right.setFont(new Font("Orbitron", Font.BOLD, 50));
@@ -147,7 +153,7 @@ public class ComputerOrganization implements ActionListener {
         number_right.setHorizontalAlignment(JTextField.CENTER);
         number_right.setEditable(false);
 
-        percentage.setBounds(675, 325, 200, 100);
+        percentage.setBounds(centerX + 35, centerY + 50, 200, 100);
         percentage.setBackground(new Color(25, 25, 25));
         percentage.setForeground(new Color(25, 255, 0));
         percentage.setFont(new Font("Orbitron", Font.BOLD, 50));
@@ -295,8 +301,19 @@ public class ComputerOrganization implements ActionListener {
         answer_labelC.setText("");
         answer_labelD.setText("");
 
-        number_right.setText("(" + correct_guesses + "/" + total_questions + ")");
-        percentage.setText(result + "%");
+        number_right.setBounds(centerX - 225, centerY - 75, 500, 100); // Adjust the position
+        number_right.setText("Correct: " + correct_guesses + "/" + total_questions);
+        number_right.setEditable(false);
+        number_right.setBackground(new Color(25, 25, 25));
+        number_right.setForeground(new Color(25, 255, 0));
+        number_right.setFont(new Font("Orbitron", Font.BOLD, 50));
+
+        percentage.setBounds(centerX - 225, centerY + 25, 500, 100); // Adjust the position
+        percentage.setText("Percentage: " + result + "%");
+        percentage.setEditable(false);
+        percentage.setBackground(new Color(25, 25, 25));
+        percentage.setForeground(new Color(25, 255, 0));
+        percentage.setFont(new Font("Orbitron", Font.BOLD, 50));
 
         returnButton.setText("Return Home");
         frame.add(number_right);

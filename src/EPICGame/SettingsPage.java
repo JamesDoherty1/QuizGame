@@ -1,8 +1,6 @@
 package EPICGame;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.LayoutManager;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -14,32 +12,36 @@ public class SettingsPage {
     ImageIcon backgroundImage = new ImageIcon("images/SettingsPageBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
-
     SettingsPage() {
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
 
-        settingsLabel.setBounds(610, 40, 1000, 80);
-        settingsLabel.setFont(new Font((String) null, 0, 25));
-        settingsLabel.setForeground(new Color(20, 255, 255));
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // Calculate the center of the screen
+        int centerX = screenSize.width / 2;
+        int centerY = screenSize.height / 2;
+
+        // Calculate the positions of the components relative to the screen center
+        settingsLabel.setBounds(centerX - 150, centerY - 300, 700, 80);
         settingsLabel.setFont(new Font("Orbitron", Font.BOLD, 70));
+        settingsLabel.setForeground(new Color(20, 255, 255));
         this.frame.add(this.settingsLabel);
 
-        musicLabel.setBounds(530, 210, 500, 35);
-        musicLabel.setFont(new Font((String) null, 2, 25));
+        musicLabel.setBounds(centerX - 250, centerY - 50, 500, 35);
         musicLabel.setFont(new Font("Orbitron", Font.PLAIN, 30));
-        musicLabel.setForeground(new Color(255,215,0));
+        musicLabel.setForeground(new Color(255, 215, 0));
         this.frame.add(this.musicLabel);
 
         JButton musicVolume = new JButton("Mute/Unmute");
-        musicVolume.setBounds(640, 200, 300, 60);
+        musicVolume.setBounds(centerX - 150, centerY - 60, 300, 60);
         musicVolume.setFont(new Font("Black Ops One", Font.PLAIN, 25));
         musicVolume.setBackground(new Color(0, 255, 255));
         musicVolume.setFocusable(false);
         this.frame.add(musicVolume);
 
         JButton returnButton = new JButton("Return");
-        returnButton.setBounds(680, 650, 150, 50);
+        returnButton.setBounds(centerX - 75, centerY + 200, 150, 50);
         returnButton.setFont(new Font("Black Ops One", Font.PLAIN, 23));
         returnButton.setBackground(new Color(0, 255, 255));
         returnButton.setFocusable(false);
@@ -47,13 +49,12 @@ public class SettingsPage {
 
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.frame.setLayout((LayoutManager) null);
+        this.frame.setLayout(null);
         this.frame.setVisible(true);
-
 
         musicVolume.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                // Implement your action here
             }
         });
 
@@ -61,15 +62,12 @@ public class SettingsPage {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new WelcomePage("again");
-                //Send again as String
+                // Send "again" as a String
             }
         });
     }
 
-
     public static void main(String[] args) {
         new SettingsPage();
-        //Open SettingsPage constructor from main
     }
 }
-
