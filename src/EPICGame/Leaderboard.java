@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Leaderboard implements ActionListener {
-    //GUI Components
+    // GUI Components
     JFrame frame = new JFrame();
     JButton first = new JButton();
     JButton second = new JButton();
@@ -14,69 +14,53 @@ public class Leaderboard implements ActionListener {
     JButton fourth = new JButton();
     JButton fifth = new JButton();
 
-    Leaderboard(){
-        frame.setSize(313, 337);
-        frame.setLocation(1094, 235);
-        frame.setVisible(true);
-        frame.setResizable(false);
-        frame.setLayout((LayoutManager) null);
+    Leaderboard() {
+        int centerX = frame.getWidth() / 2;
+        int centerY = frame.getHeight() / 2;
 
-        first.setBounds(0, 0, 300, 60);
-        first.setFont(new Font("Black Ops One",Font.PLAIN,23));
-        first.setBackground(new Color(20,255,255));
-        first.setFocusable(false);
-        first.addActionListener(this);
-        first.setText("First");
+        frame.setSize(314, 335);
+        frame.setLocation(centerX + 1171, centerY + 293);// Set a specific size for the frame
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null); // Use absolute layout for manual positioning
+
+        int buttonWidth = 300;
+        int buttonHeight = 60;
+
+        first.setBounds(centerX, centerY, buttonWidth, buttonHeight);
+        configureButton(first, "First");
         frame.add(first);
 
-        second.setBounds(0, 60, 300, 60);
-        second.setBackground(new Color(20,255,255));
-        second.setFont(new Font("Black Ops One",Font.PLAIN,23));
-        second.setFocusable(false);
-        second.addActionListener(this);
-        second.setText("Second");
+        second.setBounds(centerX, centerY + 60, buttonWidth, buttonHeight);
+        configureButton(second, "Second");
         frame.add(second);
 
-        third.setBounds(0, 120, 300, 60);
-        third.setBackground(new Color(20,255,255));
-        third.setFont(new Font("Black Ops One",Font.PLAIN,23));
-        third.setFocusable(false);
-        third.addActionListener(this);
-        third.setText("Third");
+        third.setBounds(centerX, centerY+ 120, buttonWidth, buttonHeight);
+        configureButton(third, "Third");
         frame.add(third);
 
-        fourth.setBounds(0, 180, 300, 60);
-        fourth.setBackground(new Color(20,255,255));
-        fourth.setFont(new Font("Black Ops One",Font.PLAIN,23));
-        fourth.setFocusable(false);
-        fourth.addActionListener(this);
-        fourth.setText("Fourth");
+        fourth.setBounds(centerX, centerY + 180, buttonWidth, buttonHeight);
+        configureButton(fourth, "Fourth");
         frame.add(fourth);
 
-        fifth.setBounds(0, 240, 300, 60);
-        fifth.setBackground(new Color(20,255,255));
-        fifth.setFont(new Font("Black Ops One",Font.PLAIN,23));
-        fifth.setFocusable(false);
-        fifth.addActionListener(this);
-        fifth.setText("Fifth");
+        fifth.setBounds(centerX, centerY + 240, buttonWidth, buttonHeight);
+        configureButton(fifth, "Fifth");
         frame.add(fifth);
+
+        frame.setVisible(true);
+    }
+
+    private void configureButton(JButton button, String text) {
+        button.setFont(new Font("Black Ops One", Font.PLAIN, 23));
+        button.setBackground(new Color(20, 255, 255));
+        button.setFocusable(false);
+        button.addActionListener(this);
+        button.setText(text);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==first){
-            new LeaderboardStats();
-        }
-        if(e.getSource()==second){
-            new LeaderboardStats();
-        }
-        if(e.getSource()==third){
-            new LeaderboardStats();
-        }
-        if(e.getSource()==fourth){
-            new LeaderboardStats();
-        }
-        if(e.getSource()==fifth){
+        if (e.getSource() == first || e.getSource() == second || e.getSource() == third ||
+                e.getSource() == fourth || e.getSource() == fifth) {
             new LeaderboardStats();
         }
     }

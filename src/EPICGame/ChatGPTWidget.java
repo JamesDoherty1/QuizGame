@@ -87,7 +87,7 @@ public class ChatGPTWidget {
 
     public static String chatGPT (String prompt){
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "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";
+        String apiKey = "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";
         String model = "gpt-3.5-turbo";
         //Creating variables for the url, api and model
 
