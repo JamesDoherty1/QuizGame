@@ -3,7 +3,6 @@ package EPICGame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -41,31 +40,35 @@ public class RandomGame implements ActionListener {
     private Connection connection;
     private PreparedStatement statement;
     private ResultSet resultSet;
+    private JButton returnButton;
 
-    private int[] questionOrder;  // Store the order of question
+    private int[] questionOrder;  // Store the order of questions
     private int currentQuestionIndex;  // Keep track of the current question index
+    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
 
-    public RandomGame() {
-        frame = new JFrame("RandomQuiz");
+    // Get the screen size
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+    // Calculate the positions relative to the screen center
+    int centerX = screenSize.width / 2;
+    int centerY = screenSize.height / 2;
+    int buttonWidth = 100;
+    int buttonHeight = 100;
+
+    private String username;
+
+    public RandomGame(String username) {
+        this.username = username;
+
+        frame = new JFrame("Random Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(650, 650);
-        frame.getContentPane().setBackground(new Color(99, 111, 237));
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(null);
         frame.setResizable(false);
 
-        textfield = new JTextField();
-        textarea = new JTextArea();
-        buttonA = new JButton();
-        buttonB = new JButton();
-        buttonC = new JButton();
-        buttonD = new JButton();
-        answer_labelA = new JLabel();
-        answer_labelB = new JLabel();
-        answer_labelC = new JLabel();
-        answer_labelD = new JLabel();
-        number_right = new JTextField();
-        percentage = new JTextField();
-
+        frame.add(backgroundLabel);
+        frame.setContentPane(backgroundLabel);
         // Initialize the database connection
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:EpicDatabase.db");
@@ -79,85 +82,115 @@ public class RandomGame implements ActionListener {
         total_questions = questions.length;
 
         // Initialize GUI components
-        textfield.setBounds(0, 0, 650, 50);
-        textfield.setBackground(new Color(217, 25, 25));
-        textfield.setForeground(new Color(151, 255, 255));
-        textfield.setFont(new Font("Impact", Font.BOLD, 30));
+        textfield = new JTextField();
+        textarea = new JTextArea();
+        buttonA = new JButton();
+        buttonB = new JButton();
+        buttonC = new JButton();
+        buttonD = new JButton();
+        answer_labelA = new JLabel();
+        answer_labelB = new JLabel();
+        answer_labelC = new JLabel();
+        answer_labelD = new JLabel();
+        number_right = new JTextField();
+        percentage = new JTextField();
+
+        textfield.setBounds(centerX - 325, centerY - 375, 650, 50);
+        textfield.setBackground(new Color(0, 255, 255));
+        textfield.setForeground(new Color(0, 0, 0));
+        textfield.setFont(new Font("Orbitron", Font.BOLD, 30));
         textfield.setBorder(BorderFactory.createBevelBorder(1));
         textfield.setHorizontalAlignment(JTextField.CENTER);
         textfield.setEditable(false);
-        textfield.setText("Welcome");
 
-        textarea.setBounds(0, 50, 650, 120);
+        textarea.setBounds(centerX - 325, centerY - 325, 650, 100);
         textarea.setLineWrap(true);
         textarea.setWrapStyleWord(true);
-        textarea.setBackground(new Color(217, 25, 25));
-        textarea.setForeground(new Color(151, 255, 255));
-        textarea.setFont(new Font("MV Boli", Font.BOLD, 18));
+        textarea.setBackground(new Color(25, 25, 25));
+        textarea.setForeground(new Color(0, 255, 255));
+        textarea.setFont(new Font("Orbitron", Font.BOLD, 25));
         textarea.setBorder(BorderFactory.createBevelBorder(1));
         textarea.setEditable(false);
-        textarea.setText("Sample text");
 
-        buttonA.setBounds(0, 175, 100, 100);
-        buttonA.setFont(new Font("MV Boli", Font.BOLD, 25));
+        buttonA.setBounds(centerX - 325, centerY - 175, buttonWidth, buttonHeight);
+        buttonA.setFont(new Font("Orbitron", Font.BOLD, 35));
+        buttonA.setBackground(new Color(0, 255, 255));
         buttonA.setFocusable(false);
         buttonA.addActionListener(this);
         buttonA.setText("A");
 
-        buttonB.setBounds(0, 275, 100, 100);
-        buttonB.setFont(new Font("MV Boli", Font.BOLD, 25));
+        buttonB.setBounds(centerX - 325, centerY - 75, buttonWidth, buttonHeight);
+        buttonB.setFont(new Font("Orbitron", Font.BOLD, 35));
+        buttonB.setBackground(new Color(0, 255, 255));
         buttonB.setFocusable(false);
         buttonB.addActionListener(this);
         buttonB.setText("B");
 
-        buttonC.setBounds(0, 375, 100, 100);
-        buttonC.setFont(new Font("MV Boli", Font.BOLD, 25));
+        buttonC.setBounds(centerX - 325, centerY + 25, buttonWidth, buttonHeight);
+        buttonC.setFont(new Font("Orbitron", Font.BOLD, 35));
+        buttonC.setBackground(new Color(0, 255, 255));
         buttonC.setFocusable(false);
         buttonC.addActionListener(this);
         buttonC.setText("C");
 
-        buttonD.setBounds(0, 475, 100, 100);
-        buttonD.setFont(new Font("MV Boli", Font.BOLD, 25));
+        buttonD.setBounds(centerX - 325, centerY + 125, buttonWidth, buttonHeight);
+        buttonD.setFont(new Font("Orbitron", Font.BOLD, 35));
+        buttonD.setBackground(new Color(0, 255, 255));
         buttonD.setFocusable(false);
         buttonD.addActionListener(this);
         buttonD.setText("D");
 
-        answer_labelA.setBounds(125, 175, 600, 100);
-        answer_labelA.setBackground(new Color(99, 111, 237));
-        answer_labelA.setForeground(new Color(151, 255, 255));
-        answer_labelA.setFont(new Font("MV Boli", Font.PLAIN, 10));
-        answer_labelA.setText("yes");
+        returnButton = new JButton();
+        returnButton.setBounds(centerX - 150, centerY + 275, 300, 80);
+        returnButton.setFont(new Font("Orbitron", Font.BOLD, 35));
+        returnButton.setBackground(new Color(0, 255, 255));
+        returnButton.setFocusable(false);
+        returnButton.addActionListener(this);
+        returnButton.setText("Give Up");
+        returnButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == returnButton) {
+                    frame.dispose();
+                    new WelcomePage(username); // Assuming you need to pass the username
+                }
+            }
+        });
 
-        answer_labelB.setBounds(125, 275, 600, 100);
-        answer_labelB.setBackground(new Color(99, 111, 237));
-        answer_labelB.setForeground(new Color(151, 255, 255));
-        answer_labelB.setFont(new Font("MV Boli", Font.PLAIN, 10));
-        answer_labelB.setText("yes");
 
-        answer_labelC.setBounds(125, 375, 600, 100);
-        answer_labelC.setBackground(new Color(99, 111, 237));
-        answer_labelC.setForeground(new Color(151, 255, 255));
-        answer_labelC.setFont(new Font("MV Boli", Font.PLAIN, 10));
-        answer_labelC.setText("yes");
 
-        answer_labelD.setBounds(125, 475, 600, 100);
-        answer_labelD.setBackground(new Color(99, 111, 237));
-        answer_labelD.setForeground(new Color(151, 255, 255));
-        answer_labelD.setFont(new Font("MV Boli", Font.PLAIN, 10));
-        answer_labelD.setText("yes");
 
-        number_right.setBounds(225, 225, 200, 100);
-        number_right.setBackground(new Color(99, 111, 237));
-        number_right.setForeground(new Color(25, 25, 25));
-        number_right.setFont(new Font("Impact", Font.BOLD, 50));
+        answer_labelA.setBounds(centerX - 215, centerY - 175, 500, 100);
+        answer_labelA.setBackground(new Color(50, 50, 50));
+        answer_labelA.setForeground(new Color(25, 255, 0));
+        answer_labelA.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+
+        answer_labelB.setBounds(centerX - 215, centerY - 75, 500, 100);
+        answer_labelB.setBackground(new Color(50, 50, 50));
+        answer_labelB.setForeground(new Color(25, 255, 0));
+        answer_labelB.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+
+        answer_labelC.setBounds(centerX - 215, centerY + 25, 500, 100);
+        answer_labelC.setBackground(new Color(50, 50, 50));
+        answer_labelC.setForeground(new Color(25, 255, 0));
+        answer_labelC.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+
+        answer_labelD.setBounds(centerX - 215, centerY + 125, 500, 100);
+        answer_labelD.setBackground(new Color(50, 50, 50));
+        answer_labelD.setForeground(new Color(25, 255, 0));
+        answer_labelD.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+
+        number_right.setBounds(centerX - 70, centerY - 50, 200, 100);
+        number_right.setBackground(new Color(25, 25, 25));
+        number_right.setForeground(new Color(25, 255, 0));
+        number_right.setFont(new Font("Orbitron", Font.BOLD, 50));
         number_right.setBorder(BorderFactory.createBevelBorder(1));
         number_right.setHorizontalAlignment(JTextField.CENTER);
         number_right.setEditable(false);
 
-        percentage.setBounds(225, 325, 200, 100);
-        percentage.setBackground(new Color(99, 111, 237));
-        percentage.setForeground(new Color(25, 25, 25));
-        percentage.setFont(new Font("Impact", Font.BOLD, 50));
+        percentage.setBounds(centerX - 70, centerY + 50, 200, 100);
+        percentage.setBackground(new Color(25, 25, 25));
+        percentage.setForeground(new Color(25, 255, 0));
+        percentage.setFont(new Font("Orbitron", Font.BOLD, 50));
         percentage.setBorder(BorderFactory.createBevelBorder(1));
         percentage.setHorizontalAlignment(JTextField.CENTER);
         percentage.setEditable(false);
@@ -172,6 +205,7 @@ public class RandomGame implements ActionListener {
         frame.add(buttonD);
         frame.add(textarea);
         frame.add(textfield);
+        frame.add(returnButton);
         frame.setVisible(true);
 
         questionOrder = new int[total_questions];
@@ -179,7 +213,6 @@ public class RandomGame implements ActionListener {
             questionOrder[i] = i;
         }
         shuffleQuestions();
-
 
         nextQuestion();
     }
@@ -241,55 +274,24 @@ public class RandomGame implements ActionListener {
         }
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(index < answers.length) {
-
+        if (index < answers.length) {
             JButton selectedButton = (JButton) e.getSource();
             char buttonText = selectedButton.getText().charAt(0);
 
-            System.out.println(buttonText + " and correct ans: " + Character.toUpperCase((answers[index])));
+            System.out.println(buttonText + " and correct ans: " + answers[index]);
 
-            if(buttonText == Character.toUpperCase((answers[index]))){
+            if (Character.toUpperCase(buttonText) == Character.toUpperCase(answers[index])) {
                 correct_answers++;
                 System.out.println("incremented");
             }
 
-            if (e.getSource() == buttonA) {
-                answer = 'A';
-                if (Character.toUpperCase(answer) == Character.toUpperCase((answers[index])) ) {
-
-                    correct_answers++;
-                }
-            }
-            if (e.getSource() == buttonB) {
-                answer = 'B';
-                if (Character.toUpperCase(answer) == Character.toUpperCase((answers[index]))) {
-
-                    correct_answers++;
-                }
-            }
-            if (e.getSource() == buttonC) {
-                answer = 'C';
-                if (Character.toUpperCase(answer) == Character.toUpperCase((answers[index]))) {
-
-                    correct_answers++;
-                }
-            }
-            if (e.getSource() == buttonD) {
-                answer = 'D';
-                if (Character.toUpperCase(answer) == Character.toUpperCase((answers[index]))) {
-
-                    correct_answers++;
-                }
-            }
             index++;
             nextQuestion();
         }
     }
-
-
-
 
     private void results() {
         System.out.println("correct answers: " + correct_answers);
@@ -305,10 +307,27 @@ public class RandomGame implements ActionListener {
         percentage.setText(result + "%");
         frame.add(percentage);
         frame.add(number_right);
+
+        // Save the user's results to the database
+        saveResultsToDatabase();
+    }
+
+    private void saveResultsToDatabase() {
+        try {
+            String query = "INSERT INTO user_results (username, correct_answers, total_questions, percentage) VALUES (?, ?, ?, ?)";
+            PreparedStatement insertStatement = connection.prepareStatement(query);
+            insertStatement.setString(1, username);
+            insertStatement.setInt(2, correct_answers);
+            insertStatement.setInt(3, total_questions);
+            insertStatement.setDouble(4, result);
+            insertStatement.executeUpdate();
+            insertStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new RandomGame());
-
+        SwingUtilities.invokeLater(() -> new RandomGame("Test")); // Provide the username here
     }
 }

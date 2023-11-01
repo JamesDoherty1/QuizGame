@@ -4,95 +4,123 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import java.util.HashMap;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 public class SignupPage implements ActionListener {
-    // GUI components
-    JFrame frame = new JFrame();
-    JButton signupButton = new JButton("Sign Up");
-    JButton returnButton = new JButton("Return");
-    JTextField enterUsername = new JTextField();
-    JPasswordField enterPassword1 = new JPasswordField();
-    JPasswordField enterPassword2 = new JPasswordField();
-    JLabel usernameLabel = new JLabel("Enter Username:");
-    JLabel password1Label = new JLabel("Enter Password:");
-    JLabel password2Label = new JLabel("Re-Enter Password:");
-    JLabel usernameMessageLabel = new JLabel("");
-    JLabel passwordMessageLabel = new JLabel("");
-
-    HashMap<String, String> logininfo = new HashMap();
-
-    SignupPage(HashMap<String, String> loginInfoOriginal) {
-        this.logininfo = loginInfoOriginal;
-        this.usernameLabel.setBounds(600, 310, 200, 25);
-        this.password1Label.setBounds(600, 360, 200, 25);
-        this.password2Label.setBounds(600, 410, 200, 25);
-        this.usernameMessageLabel.setBounds(650, 500, 400, 35);
-        this.usernameMessageLabel.setFont(new Font((String)null, 2, 25));
-        this.passwordMessageLabel.setBounds(650, 550, 400, 35);
-        this.passwordMessageLabel.setFont(new Font((String)null, 2, 25));
-        this.enterUsername.setBounds(720, 310, 200, 25);
-        this.enterPassword1.setBounds(720, 360, 200, 25);
-        this.enterPassword2.setBounds(720, 410, 200, 25);
-        this.signupButton.setBounds(720, 450, 100, 25);
-
-    ImageIcon backgroundImage = new ImageIcon ("background.jpg");
+    private JFrame frame = new JFrame("Sign Up");
+    private JButton signupButton = new JButton("Sign Up");
+    private JButton returnButton = new JButton("Return");
+    private JTextField enterUsername = new JTextField();
+    private JPasswordField enterPassword1 = new JPasswordField();
+    private JPasswordField enterPassword2 = new JPasswordField();
+    private JLabel usernameLabel = new JLabel("Enter Username:");
+    private JLabel password1Label = new JLabel("Enter Password:");
+    private JLabel password2Label = new JLabel("Re-Enter Password:");
+    private JLabel usernameMessageLabel = new JLabel("");
+    private JLabel passwordMessageLabel = new JLabel("");
+    ImageIcon backgroundImage = new ImageIcon("background.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
-    public SignupPage() {
+    private int centerX;
+    private int centerY;
+    private int labelWidth = 300;
+    private int labelHeight = 50;
+    private int textFieldWidth = 300;
+    private int textFieldHeight = 50;
+    private int buttonWidth = 200;
+    private int buttonHeight = 50;
 
+    private HashMap<String, String> logininfo = new HashMap<>();
+
+    public SignupPage() {
+        initializeGUI();
+    }
+
+    public SignupPage(HashMap<String, String> loginInfoOriginal) {
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
+        this.logininfo = loginInfoOriginal;
+        int screenWidth = (int) java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+        int screenHeight = (int) java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-        this.usernameLabel.setBounds(440, 200, 300, 50);
-        this.usernameLabel.setForeground(new Color(0, 255, 255));
-        this.usernameLabel.setFont(new Font("Orbitron",Font.BOLD,20));
+        centerX = screenWidth / 2;
+        centerY = screenHeight / 2;
 
-        this.password1Label.setBounds(440, 300, 300, 50);
-        this.password1Label.setForeground(new Color(0, 255, 255));
-        this.password1Label.setFont(new Font("Orbitron",Font.BOLD,20));
+        initializeGUI();
+    }
 
-        this.password2Label.setBounds(440, 400, 300, 50);
-        this.password2Label.setForeground(new Color(0, 255, 255));
-        this.password2Label.setFont(new Font("Orbitron",Font.BOLD,20));
+    private void initializeGUI() {
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setLayout(null);
 
-        this.usernameMessageLabel.setForeground(new Color(0,0,0));
-        this.usernameMessageLabel.setFont(new Font("Orbitron",Font.BOLD,20));
+        // Set the background color
+        frame.getContentPane().setBackground(new Color(0, 0, 0));
 
-        this.passwordMessageLabel.setBounds(657, 500, 400, 35);
-        this.passwordMessageLabel.setForeground(new Color(0,0,0));
-        this.passwordMessageLabel.setFont(new Font("Orbitron",Font.BOLD,20));
+        // Set the font and color for labels
+        Font labelFont = new Font("Orbitron", Font.BOLD, 20);
+        Color labelColor = new Color(255, 232, 0);
 
-        this.enterUsername.setBounds(670, 200, 300, 50);
-        this.enterUsername.setBackground(new Color(0,255,255));
-        this.enterUsername.setFont(new Font("Black Ops One",Font.PLAIN,20));
+        // Set the font and color for error messages
+        Font errorFont = new Font("Orbitron", Font.BOLD, 20);
+        Color errorColor = Color.red;
 
-        this.enterPassword1.setBounds(670, 300, 300, 50);
-        this.enterPassword1.setBackground(new Color(0,255,255));
-        this.enterPassword1.setFont(new Font("Black Ops One",Font.PLAIN,20));
+        // Set the font and color for text fields
+        Font textFieldFont = new Font("Black Ops One", Font.PLAIN, 20);
+        Color textFieldBackgroundColor = new Color(0, 255, 255);
 
-        this.enterPassword2.setBounds(670, 400, 300, 50);
-        this.enterPassword2.setBackground(new Color(0,255,255));
-        this.enterPassword2.setFont(new Font("Black Ops One",Font.PLAIN,20));
+        // Set the font and color for buttons
+        Font buttonFont = new Font("Black Ops One", Font.PLAIN, 30);
+        Color buttonBackgroundColor = new Color(0, 255, 255);
 
-        this.signupButton.setBounds(620, 550, 200, 50);
-        this.signupButton.setFont(new Font("Black Ops One",Font.PLAIN,30));
-        this.signupButton.setBackground(new Color(0,255,255));
+        // Add GUI components and set their positions and styles
 
+        this.usernameLabel.setBounds(centerX - 300 , centerY - 200, labelWidth, labelHeight);
+        this.usernameLabel.setForeground(new Color(255, 232, 0));
+        this.usernameLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+
+        this.password1Label.setBounds(centerX - 300, centerY - 100, labelWidth, labelHeight);
+        this.password1Label.setForeground(new Color(255, 232, 0));
+        this.password1Label.setFont(new Font("Orbitron", Font.BOLD, 20));
+
+        this.password2Label.setBounds(centerX - 300, centerY, labelWidth, labelHeight);
+        this.password2Label.setForeground(new Color(255, 232, 0));
+        this.password2Label.setFont(new Font("Orbitron", Font.BOLD, 20));
+
+        this.usernameMessageLabel.setBounds(centerX, centerY + 400, labelWidth + 200, labelHeight);
+        this.usernameMessageLabel.setForeground(new Color(0, 0, 0));
+        this.usernameMessageLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+
+        this.passwordMessageLabel.setBounds(centerX, centerY + 450, labelWidth + 400, labelHeight);
+        this.passwordMessageLabel.setForeground(new Color(0, 0, 0));
+        this.passwordMessageLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+
+        this.enterUsername.setBounds(centerX - 50, centerY - 200, textFieldWidth, textFieldHeight);
+        this.enterUsername.setBackground(new Color(0, 255, 255));
+        this.enterUsername.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+
+        this.enterPassword1.setBounds(centerX - 50, centerY - 100, textFieldWidth, textFieldHeight);
+        this.enterPassword1.setBackground(new Color(0, 255, 255));
+        this.enterPassword1.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+
+        this.enterPassword2.setBounds(centerX - 50, centerY, textFieldWidth, textFieldHeight);
+        this.enterPassword2.setBackground(new Color(0, 255, 255));
+        this.enterPassword2.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+
+        this.signupButton.setBounds(centerX - 150, centerY + 200, buttonWidth, buttonHeight);
+        this.signupButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
+        this.signupButton.setBackground(new Color(0, 255, 255));
         this.signupButton.setFocusable(false);
         this.signupButton.addActionListener(this);
-        this.returnButton.setBounds(820, 450, 100, 25);
+
+        this.returnButton.setBounds(centerX + 50, centerY + 200, buttonWidth, buttonHeight);
+        this.returnButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
+        this.returnButton.setBackground(new Color(0, 255, 255));
         this.returnButton.setFocusable(false);
         this.returnButton.addActionListener(this);
 
@@ -107,20 +135,17 @@ public class SignupPage implements ActionListener {
         this.frame.add(this.signupButton);
         this.frame.add(this.returnButton);
 
-        this.frame.setDefaultCloseOperation(3);
-        this.frame.setExtendedState(6);
-        this.frame.setLayout((LayoutManager)null);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.frame.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == this.returnButton) {
-            this.frame.dispose();
-            new LoginPage(this.idandPasswords.getLoginInfo());
-
-        if (e.getSource() == signupButton) {
+        if (e.getSource() == returnButton) {
+            frame.dispose();
+            new LoginPage(logininfo);
+        } else if (e.getSource() == signupButton) {
             String username = enterUsername.getText();
             String password = String.valueOf(enterPassword1.getPassword());
             String reenterPassword = String.valueOf(enterPassword2.getPassword());
@@ -137,7 +162,7 @@ public class SignupPage implements ActionListener {
                         // Successful registration
                         JOptionPane.showMessageDialog(frame, "Registration successful!");
                         frame.dispose();
-                        new LoginPage(); // Open the LoginPage
+                        new LoginPage(logininfo); // Open the LoginPage
                     } else {
                         JOptionPane.showMessageDialog(frame, "Registration failed. Please try again.");
                     }
@@ -145,93 +170,65 @@ public class SignupPage implements ActionListener {
                     JOptionPane.showMessageDialog(frame, "Username already exists. Please choose a different one.");
                 }
             }
-        } else if (e.getSource() == returnButton) {
-            frame.dispose();
-            new LoginPage();
-
         }
     }
 
+    // Check if a username is available
+    private boolean isUsernameAvailable(String username) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-        if (e.getSource() == this.signupButton) {
-            String username = this.enterUsername.getText();
-            String password1 = String.valueOf(this.enterPassword1.getPassword());
-            String password2 = String.valueOf(this.enterPassword2.getPassword());
-            if (this.logininfo.containsKey(username)) {
-                this.usernameMessageLabel.setForeground(Color.red);
-                this.usernameMessageLabel.setText("This username already exists!");
-                this.enterUsername.setText("");
+        try {
+            conn = DriverManager.getConnection("jdbc:sqlite:EpicDatabase.db");
+            String query = "SELECT * FROM login WHERE username = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, username);
+            rs = stmt.executeQuery();
+            return !rs.next(); // Return true if there are no results
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
+        }
+    }
 
-            if (!password1.equals(password2)) {
-                this.passwordMessageLabel.setForeground(Color.red);
-                this.passwordMessageLabel.setText("The passwords don't match!");
-                this.enterPassword1.setText("");
-                this.enterPassword2.setText("");
+    // Insert a new user into the database
+    private boolean insertUser(String username, String password) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conn = DriverManager.getConnection("jdbc:sqlite:EpicDatabase.db");
+            String query = "INSERT INTO login (username, password) VALUES (?, ?)";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
+        }
+    }
 
-            if (!this.logininfo.containsKey(username) && password1.equals(password2)) {
-                this.frame.dispose();
-                new WelcomePage(username);
-                this.logininfo.put(username, password1);
-
-
-                // Check if a username is available
-                private boolean isUsernameAvailable (String username){
-                    Connection conn = null;
-                    PreparedStatement stmt = null;
-                    ResultSet rs = null;
-
-                    try {
-                        conn = DriverManager.getConnection("jdbc:sqlite:EpicDatabase.db");
-                        String query = "SELECT * FROM login WHERE username = ?";
-                        stmt = conn.prepareStatement(query);
-                        stmt.setString(1, username);
-                        rs = stmt.executeQuery();
-                        return !rs.next(); // Return true if there are no results
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                        return false;
-                    } finally {
-                        try {
-                            if (rs != null) rs.close();
-                            if (stmt != null) stmt.close();
-                            if (conn != null) conn.close();
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-
-                        }
-                    }
-
-                }
-
-                // Insert a new user into the database
-                private boolean insertUser (String username, String password){
-                    Connection conn = null;
-                    PreparedStatement stmt = null;
-
-                    try {
-                        conn = DriverManager.getConnection("jdbc:sqlite:EpicDatabase.db");
-                        String query = "INSERT INTO login (username, password) VALUES (?, ?)";
-                        stmt = conn.prepareStatement(query);
-                        stmt.setString(1, username);
-                        stmt.setString(2, password);
-                        stmt.executeUpdate();
-                        return true;
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                        return false;
-                    } finally {
-                        try {
-                            if (stmt != null) stmt.close();
-                            if (conn != null) conn.close();
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-                public static void main (String[]args){
-                    new SignupPage();
-                }
-            }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new SignupPage();
+        });
+    }
+}

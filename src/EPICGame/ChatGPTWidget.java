@@ -1,6 +1,6 @@
 package EPICGame;
 
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -9,26 +9,92 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class ChatGPTWidget {
-    public ChatGPTWidget() {
+    JFrame frame = new JFrame("ChatGPT Widget");
+    JLabel instructionLabel = new JLabel("Enter your search query:");
+    JTextField inputField = new JTextField(20);
+    JButton submitButton = new JButton("Submit");
+    JTextArea responseArea = new JTextArea(10, 60);
+    JButton returnButton = new JButton("Return");
+    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
+
+    ChatGPTWidget() {
+        frame.add(backgroundLabel);
+        frame.setContentPane(backgroundLabel);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int centerX = screenSize.width / 2;
+        int centerY = screenSize.height / 2;
+
+        instructionLabel.setBounds(centerX - 500, centerY - 400, 400, 40);
+        instructionLabel.setForeground(new Color(0, 255, 255));
+        instructionLabel.setFont(new Font("Orbitron", Font.BOLD, 25));
+
+        submitButton.setBounds(centerX + 180, centerY - 400, 150, 50);
+        submitButton.setBackground(new Color(0, 255, 255));
+        submitButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
+
+        responseArea.setWrapStyleWord(true);
+        responseArea.setLineWrap(true);
+        responseArea.setEditable(false);
+        responseArea.setBounds(centerX - 250, centerY - 320, 500, 550);
+        responseArea.setBackground(new Color(128, 0, 255));
+        responseArea.setFont(new Font("Black Ops One", Font.PLAIN, 15));
+
+        inputField.setBounds(centerX - 145, centerY - 400, 300, 50);
+        inputField.setBackground(new Color(0, 255, 255));
+        inputField.setFont(new Font("Black Ops One", Font.PLAIN, 15));
+
+        returnButton.setBounds(centerX - 100, centerY + 250, 200, 50);
+        returnButton.setBackground(new Color(0, 255, 255));
+        returnButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
+
+        frame.add(instructionLabel);
+        frame.add(inputField);
+        frame.add(submitButton);
+        frame.add(responseArea);
+        frame.add(returnButton);
+        frame.setVisible(true);
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String query = inputField.getText();
+
+                if (!query.isEmpty()) {
+                    String response = ChatGPTWidget.chatGPT(query);
+                    responseArea.setText(response);
+                } else {
+                    responseArea.setText("Please enter a search query.");
+                }
+            }
+        });
+
+        returnButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == returnButton) {
+                    new WelcomePage("again");
+                    frame.dispose();
+                }
+            }
+        });
     }
 
-    public static String chatGPT(String prompt) {
+    public static String chatGPT (String prompt){
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "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";
+        String apiKey = "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";
         String model = "gpt-3.5-turbo";
+        //Creating variables for the url, api and model
 
-        try {
+        try {//try and catch used incase mistakes happen
+
             URL object = new URL(url); //Creates a URL from url
-            HttpURLConnection connection = (HttpURLConnection)object.openConnection(); //Established a connection to the URL
+            HttpURLConnection connection = (HttpURLConnection) object.openConnection(); //Established a connection to the URL
 
             connection.setRequestMethod("POST"); //Specifies that I want to send (post) data to the server
             connection.setRequestProperty("Authorization", "Bearer " + apiKey); //The 'Authorization' Header is set with the API key
@@ -47,7 +113,7 @@ public class ChatGPTWidget {
             StringBuffer response = new StringBuffer(); //Store response as a mutable String
 
             String line;
-            while((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                 response.append(line);
             } // While there are still lined to read, add the lines to response
 
@@ -55,70 +121,19 @@ public class ChatGPTWidget {
             return extractMessageFromJSONResponse(response.toString());
         } catch (IOException var11) {
             throw new RuntimeException(var11);
+            //Incase an IOException happens
         }
     }
 
-    public static String extractMessageFromJSONResponse(String response) {
+    public static String extractMessageFromJSONResponse (String response){
         int start = response.indexOf("content") + 11;
         int end = response.indexOf("\"", start);
         return response.substring(start, end);
     } //Parses a JSON response string and specifically extract the value associated with the "content" field.
 
-    public static void main (String[] args) {
-        JFrame frame = new JFrame("ChatGPT Widget");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
-
-        JLabel instructionLabel = new JLabel("Enter your search query:");
-        panel.add(instructionLabel);
-
-        final JTextField inputField = new JTextField(20);
-        panel.add(inputField);
-
-        JButton submitButton = new JButton("Submit");
-        panel.add(submitButton);
-
-        final JTextArea responseArea = new JTextArea(10, 60);
-        responseArea.setWrapStyleWord(true);
-        responseArea.setLineWrap(true);
-        responseArea.setEditable(false);
-        panel.add(new JScrollPane(responseArea));
-
-        JButton returnButton = new JButton("Return");
-        returnButton.setBounds(660, 600, 130, 35);
-        frame.add(returnButton);
-
-        frame.add(panel);
-        frame.setVisible(true);
-
-        submitButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                String query = inputField.getText();
-
-                if (!query.isEmpty()) {
-                    String response = ChatGPTWidget.chatGPT(query);
-                    responseArea.setText(response);
-                } else {
-                    responseArea.setText("Please enter a search query.");
-                }
 
 
-            }
-        });
-        returnButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-
-                if (e.getSource() == returnButton){
-                    new WelcomePage("again");
-                    frame.dispose();
-                }
-            }
-        });
+    public static void main(String[] args) {
+        new ChatGPTWidget();
     }
 }
-

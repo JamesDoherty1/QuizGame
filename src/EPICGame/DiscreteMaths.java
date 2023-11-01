@@ -1,34 +1,65 @@
 package EPICGame;
 
-import java.awt.event.*;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class DiscreteMaths implements ActionListener {
-    String[] questions = {
-            "What is 1+1?",
-            "Immersive _______ Engineering?",
-            "Where is UL?",
-            "What is 10 x 0"
+    String[] questions;
+    String[][] options;
+
+    String[] easyQuestions = {
+            "Consider the statement: If it is raining, then I will take an umbrella. Which of the following represents the negation of this statement?",
+            "If A = {1, 2, 3} and B = {3, 4, 5}, what is the intersection of sets A and B?"
     };
-    String[][] options = {
-            {"2", "4", "-2", "1"},
-            {"Chemical", "Software", "Mechanical", "Aeronautical"},
-            {"Galway", "Dublin", "Limerick", "Clare"},
-            {"10", "1", "100", "0"}
+
+    String[] mediumQuestions = {
+            "Create a truth table to represent the logical statement: If it is raining, then the ground is wet. Determine if the statement is a tautology, a contradiction, or contingent.",
+            "Given the function f: A ? B, where A = {1, 2, 3, 4} and B = {a, b, c, d}, defined as f(1) = b, f(2) = a, f(3) = c, and f(4) = d. Determine if this function is injective, surjective, or bijective. Explain your reasoning."
     };
-    char[] answers = {
-            'A',
+
+    String[] hardQuestions = {
+            "Minimum Spanning Tree: Given a connected, weighted graph G, explain and provide an algorithm to find the minimum spanning tree (MST) of G. Describe the steps involved in the algorithm.",
+            "Explain the P vs. NP problem, one of the most famous unsolved questions in computer science. Define P and NP, and discuss the implications of solving this problem."
+    };
+
+    String[][] easyQuestionOptions = {
+            {"If it is raining, then I will not take an umbrella.", "If it is not raining, then I will take an umbrella.", "If it is not raining, then I will not take an umbrella.", "It is raining and I will take an umbrella."},
+            {"{1, 2}", "{3, 4, 5}", "{1, 2, 3, 4, 5}", "{3}"}
+    };
+
+    String[][] mediumQuestionOptions = {
+            {"The statement is a tautology.", "The statement is a contradiction.", "The statement is contingent.", "The statement is neither a tautology nor a contradiction, but it is also not contingent."},
+            {"The function is injective.", "The function is surjective.", "The function is bijective.", "The function is neither injective nor surjective, and therefore, not bijective."}
+    };
+
+    String[][] hardQuestionOptions = {
+            {"Kruskal's algorithm: Sort edges by weight, add the lowest-weight edge not causing a cycle.", "Dijkstra's algorithm: Find the shortest path between two arbitrary vertices and repeat until the entire tree is constructed.", "Prim's algorithm: Start with a single vertex and repeatedly add the minimum-weight edge from the set of edges connecting the current tree to vertices outside it.", "Bellman-Ford algorithm: Find the shortest path from a source vertex to all other vertices in the graph."},
+            {"P consists of problems that can be solved in polynomial time, NP consists of problems for which a proposed solution can be checked in polynomial time. Solving P vs. NP would have no practical implications.", "P consists of problems that can be solved quickly, NP consists of problems that may not have fast solutions but can be quickly verified. Proving P = NP would have significant consequences for cryptography and optimization.", "P consists of problems that can be solved in exponential time, NP consists of problems that can be solved in polynomial time. Solving P vs. NP would make all computational problems efficiently solvable.", "P consists of problems that are easy, NP consists of problems that are hard. Solving P vs. NP would not impact computer science or technology."}
+    };
+
+    char[] easyAnswers = {
             'B',
-            'C',
-            'C'
+            'D'
     };
+
+    char[] mediumAnswers = {
+            'C',
+            'D'
+    };
+
+    char[] hardAnswers = {
+            'C',
+            'B'
+    };
+
+    char[] answers;
 
     char guess;
     char answer;
     int index;
     int correct_guesses = 0;
-    int total_questions = questions.length;
+    int total_questions;
     int result;
 
     JFrame frame = new JFrame();
@@ -45,7 +76,7 @@ public class DiscreteMaths implements ActionListener {
     JLabel answer_labelD = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
-    ImageIcon backgroundImage = new ImageIcon("images/DiscreteMathsBackground.jpg");
+    ImageIcon backgroundImage = new ImageIcon("background.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     public DiscreteMaths(String Difficulty, String subject) {
@@ -61,7 +92,23 @@ public class DiscreteMaths implements ActionListener {
         int centerX = screenSize.width / 2;
         int centerY = screenSize.height / 2;
 
-        // Calculate the positions based on the center of the screen
+        total_questions = easyQuestions.length + mediumQuestions.length + hardQuestions.length;
+        answers = new char[total_questions];
+
+        if (Difficulty.equals("Easy")) {
+            questions = easyQuestions;
+            options = easyQuestionOptions;
+            answers = easyAnswers;
+        } else if (Difficulty.equals("Medium")) {
+            questions = mediumQuestions;
+            options = mediumQuestionOptions;
+            answers = mediumAnswers;
+        } else if (Difficulty.equals("Hard")) {
+            questions = hardQuestions;
+            options = hardQuestionOptions;
+            answers = hardAnswers;
+        }
+
         textfield.setBounds(centerX - 325, centerY - 375, 650, 50);
         textarea.setBounds(centerX - 325, centerY - 325, 650, 100);
         buttonA.setBounds(centerX - 325, centerY - 175, 100, 100);

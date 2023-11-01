@@ -10,58 +10,91 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
 
 public class LoginPage implements ActionListener {
-    // GUI Components
+    IDandPasswords idandPasswords = new IDandPasswords();
     JFrame frame = new JFrame();
-    JLabel userLabel = new JLabel("Username");
-    JLabel passwordLabel = new JLabel("Password");
-    JTextField userField = new JTextField();
-    JPasswordField passwordField = new JPasswordField();
     JButton loginButton = new JButton("Login");
     JButton resetButton = new JButton("Reset");
-
     JButton signupButton = new JButton("Sign up");
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
-    JLabel userIDLabel = new JLabel("userID:");
+    JLabel userIDLabel = new JLabel("Username:");
     JLabel userPasswordLabel = new JLabel("Password:");
     JLabel signupLabel = new JLabel("Don't have an account?");
+    JLabel quizGame1 = new JLabel("The w         wizard");
+    JLabel quizGame2 = new JLabel("ISE");
+    JLabel madeBy = new JLabel("Made by: James Doherty & Naem Haq");
     JLabel messageLabel = new JLabel();
+    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
     HashMap<String, String> logininfo = new HashMap();
 
-    LoginPage(HashMap<String, String> loginInfoOriginal) {
+    public LoginPage(HashMap<String, String> loginInfoOriginal) {
         this.logininfo = loginInfoOriginal;
+        this.frame.add(backgroundLabel);
+        this.frame.setContentPane(backgroundLabel);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.frame.setLayout(null);
+        this.frame.setVisible(true);
 
-        this.userIDLabel.setBounds(650, 310, 75, 25);
-        this.userPasswordLabel.setBounds(650, 360, 75, 25);
-        this.signupLabel.setBounds(750, 450, 200, 25);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int centreX = screenSize.width / 2;
+        int centreY = screenSize.height / 2;
 
-        this.messageLabel.setBounds(710, 500, 250, 35);
-        this.messageLabel.setFont(new Font((String)null, 2, 25));
+        this.quizGame1.setBounds(centreX - 350, centreY - 400, 1000, 100);
+        this.quizGame1.setForeground(new Color(0, 255, 255));
+        this.quizGame1.setFont(new Font("Black Ops One", Font.PLAIN, 80));
 
-        this.userIDField.setBounds(720, 310, 200, 25);
+        this.quizGame2.setBounds(centreX - 100, centreY - 400, 400, 100);
+        this.quizGame2.setForeground(new Color(0, 180, 255));
+        this.quizGame2.setFont(new Font("Black Ops One", Font.PLAIN, 80));
 
-        this.userPasswordField.setBounds(720, 360, 200, 25);
+        this.madeBy.setBounds(centreX + 300, centreY + 250, 700, 100);
+        this.madeBy.setForeground(new Color(255, 215, 0));
+        this.madeBy.setFont(new Font("Freestyle Script", Font.PLAIN, 40));
 
-        this.loginButton.setBounds(720, 410, 100, 25);
+        this.userIDLabel.setBounds(centreX - 230, centreY - 200, 300, 50);
+        this.userIDLabel.setForeground(new Color(0, 255, 255));
+        this.userIDLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+
+        this.userPasswordLabel.setBounds(centreX - 230, centreY - 100, 300, 50);
+        this.userPasswordLabel.setForeground(new Color(0, 255, 255));
+        this.userPasswordLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+
+        this.signupLabel.setBounds(centreX - 130, centreY + 170, 500, 80);
+        this.signupLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+        this.signupLabel.setForeground(new Color(0, 255, 255));
+
+        this.messageLabel.setBounds(centreX - 100, centreY + 100, 300, 35);
+        this.messageLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+
+        this.userIDField.setBounds(centreX - 80, centreY - 200, 300, 50);
+        this.userIDField.setBackground(new Color(0, 255, 255));
+        this.userIDField.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+
+        this.userPasswordField.setBounds(centreX - 80, centreY - 100, 300, 50);
+        this.userPasswordField.setBackground(new Color(0, 255, 255));
+        this.userPasswordField.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+
+        this.loginButton.setBounds(centreX - 200, centreY, 200, 50);
+        this.loginButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
+        this.loginButton.setBackground(new Color(0, 255, 255));
         this.loginButton.setFocusable(false);
         this.loginButton.addActionListener(this);
 
-        this.resetButton.setBounds(820, 410, 100, 25);
+        this.resetButton.setBounds(centreX, centreY, 200, 50);
+        this.resetButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
+        this.resetButton.setBackground(new Color(0, 255, 255));
         this.resetButton.setFocusable(false);
-
         this.resetButton.addActionListener(this);
-        this.signupButton.setBounds(720, 475, 200, 25);
+
+        this.signupButton.setBounds(centreX - 150, centreY + 220, 300, 60);
+        this.signupButton.setFont(new Font("Black Ops One", Font.PLAIN, 40));
+        this.signupButton.setBackground(new Color(0, 255, 255));
         this.signupButton.setFocusable(false);
         this.signupButton.addActionListener(this);
-
 
         this.frame.add(this.userIDLabel);
         this.frame.add(this.userPasswordLabel);
@@ -72,81 +105,13 @@ public class LoginPage implements ActionListener {
         this.frame.add(this.loginButton);
         this.frame.add(this.resetButton);
         this.frame.add(this.signupButton);
+        this.frame.add(this.quizGame1);
+        this.frame.add(this.quizGame2);
+        this.frame.add(this.madeBy);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.frame.setLayout((LayoutManager)null);
-        this.frame.setVisible(true);
-
-    JButton signupButton = new JButton("Signup");
-    JLabel notRegistered = new JLabel("Don't have an account?");
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
-    JLabel backgroundLabel = new JLabel(backgroundImage);
-
-    LoginPage(); {
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setLayout(null);
-
-        // Add GUI components, set bounds, and add action listeners
-        userLabel.setBounds(570, 250, 100, 50);
-        userLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
-        userLabel.setForeground(new Color(20, 255, 255));
-        frame.add(userLabel);
-
-        userField.setBounds(700, 250, 200, 50);
-        userField.setBackground(new Color(0, 255, 255));
-        userField.setFont(new Font("Orbitron", Font.BOLD, 20));
-        frame.add(userField);
-
-        passwordLabel.setBounds(570, 350, 100, 50);
-        passwordLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
-        passwordLabel.setForeground(new Color(20, 255, 255));
-        frame.add(passwordLabel);
-
-        passwordField.setBounds(700, 350, 200, 50);
-        passwordField.setBackground(new Color(0, 255, 255));
-        passwordField.setFont(new Font("Orbitron", Font.BOLD, 20));
-        frame.add(passwordField);
-
-        loginButton.setBounds(610, 450, 100, 50);
-        loginButton.setBackground(new Color(20, 255, 255));
-        loginButton.setFont(new Font("Orbitron", Font.BOLD, 20));
-        loginButton.setFocusable(false);
-        loginButton.addActionListener(this);
-        frame.add(loginButton);
-
-        resetButton.setBounds(720, 450, 100, 50);
-        resetButton.setBackground(new Color(20, 255, 255));
-        resetButton.setFont(new Font("Orbitron", Font.BOLD, 20));
-        resetButton.setFocusable(false);
-        resetButton.addActionListener(this);
-        frame.add(resetButton);
-
-        signupButton.setBounds(660, 550, 200, 50);
-        signupButton.setBackground(new Color(20, 255, 255));
-        signupButton.setFont(new Font("Orbitron", Font.BOLD, 20));
-        signupButton.setFocusable(false);
-        signupButton.addActionListener(this);
-        frame.add(signupButton);
-
-        notRegistered.setBounds(640, 600, 200, 50);
-        notRegistered.setFont(new Font("Orbitron", Font.BOLD, 20));
-        notRegistered.setForeground(new Color(20, 255, 255));
-        frame.add(notRegistered);
-
-        frame.add(backgroundLabel);
-        frame.setVisible(true);
-
     }
 
-    public LoginPage(HashMap loginInfo) {
-
-    }
-
-    @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == this.resetButton) {
             this.userIDField.setText("");
             this.userPasswordField.setText("");
@@ -155,36 +120,19 @@ public class LoginPage implements ActionListener {
         if (e.getSource() == this.loginButton) {
             String userID = this.userIDField.getText();
             String password = String.valueOf(this.userPasswordField.getPassword());
-            if (this.logininfo.containsKey(userID)) {
-                if (((String)this.logininfo.get(userID)).equals(password)) {
-                    this.frame.dispose();
-                    new WelcomePage(userID);
-                } else {
-                    this.messageLabel.setForeground(Color.red);
-                    this.messageLabel.setText("Wrong password");
-                }
+
+            if (login(userID, password)) {
+                this.frame.dispose();
+                new WelcomePage(userID);
             } else {
                 this.messageLabel.setForeground(Color.red);
-                this.messageLabel.setText("Username not found");
-
-        if (e.getSource() == loginButton) {
-            String username = userField.getText();
-            String password = new String(passwordField.getPassword());
-
-            if (login(username, password)) {
-                // Successful login, open WelcomePage
-                frame.dispose();
-                new WelcomePage(username);
-            } else {
-                JOptionPane.showMessageDialog(frame, "Login failed. Invalid username or password.");
-
+                this.messageLabel.setText("Login failed. Invalid username or password.");
             }
-        } else if (e.getSource() == resetButton) {
-            userField.setText("");
-            passwordField.setText("");
-        } else if (e.getSource() == signupButton) {
-            frame.dispose();
-            new SignupPage();
+        }
+
+        if (e.getSource() == this.signupButton) {
+            this.frame.dispose();
+            new SignupPage(this.idandPasswords.getLoginInfo());
         }
     }
 
@@ -206,18 +154,12 @@ public class LoginPage implements ActionListener {
             e.printStackTrace();
         }
 
-
-        if (e.getSource() == this.signupButton) {
-            this.frame.dispose();
-            new SignupPage(this.idandPasswords.getLoginInfo());
-        }
-
         return false; // False if login failed
     }
 
-
     public static void main(String[] args) {
-
-        new LoginPage();
+        SwingUtilities.invokeLater(() -> {
+            new LoginPage(new HashMap<>());
+        });
     }
 }

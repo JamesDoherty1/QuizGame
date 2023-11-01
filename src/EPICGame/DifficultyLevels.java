@@ -19,27 +19,32 @@ public class DifficultyLevels {
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
 
-        this.returnButton.setBounds(700, 700, 200, 70);
+        // Get the screen size and calculate the center
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int centerX = screenSize.width / 2;
+        int centerY = screenSize.height / 2;
+
+        this.returnButton.setBounds(centerX - 100, centerY + 200, 200, 70);
         this.returnButton.setFocusable(false);
         this.returnButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
         this.returnButton.setBackground(new Color(0, 255, 255));
 
-        hardButton.setBounds(650, 500, 300, 80);
+        hardButton.setBounds(centerX - 150, centerY + 50, 300, 80);
         hardButton.setFocusable(false);
         hardButton.setFont(new Font("Black Ops One", Font.PLAIN, 40));
         hardButton.setBackground(new Color(255, 0, 0));
 
-        mediumButton.setBounds(650, 350, 300, 80);
+        mediumButton.setBounds(centerX - 150, centerY - 100, 300, 80);
         mediumButton.setFocusable(false);
         mediumButton.setFont(new Font("Black Ops One", Font.PLAIN, 40));
         mediumButton.setBackground(new Color(255, 130, 0));
 
-        easyButton.setBounds(650, 200, 300, 80);
-        easyButton.setFocusable(false);
+        easyButton.setBounds(centerX - 150, centerY - 250, 300, 80);
+        easyButton.setFocusable (false);
         easyButton.setFont(new Font("Black Ops One", Font.PLAIN, 40));
         easyButton.setBackground(new Color(0, 255, 0));
 
-        headerLabel.setBounds(350, 30, 1200, 100);
+        headerLabel.setBounds(centerX - 480, centerY - 400, 1200, 100);
         headerLabel.setForeground(new Color(0, 255, 255));
         headerLabel.setFont(new Font("Black Ops One", Font.BOLD, 70));
 
@@ -52,42 +57,67 @@ public class DifficultyLevels {
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.frame.setLayout((LayoutManager) null);
         this.frame.setVisible(true);
-
-        easyButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int total_questions = 2; // Set to 2 for easy difficulty
-                frame.dispose();
-                new DiscreteMaths("Easy", "DiscreteMaths");
-            }
-        });
-
-        mediumButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int total_questions = 2; // Set to 2 for medium difficulty
-                frame.dispose();
-                new DiscreteMaths("Medium", subject);
-            }
-        });
-
         hardButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
-                int total_questions = 2; // Set to 2 for hard difficulty
-                frame.dispose();
-                new DiscreteMaths("Hard", subject);
+                if(subject.equals("Discrete Maths")){
+                    String Difficulty = "Hard";
+                    new DiscreteMaths(Difficulty, subject);
+                }
+                if(subject.equals("Computer Organization")){
+                    String Difficulty = "Hard";
+                    new ComputerOrganization(Difficulty, subject);
+                }
+                if(subject.equals("Computer Science")){
+                    String Difficulty = "Hard";
+                    new ComputerScience(Difficulty, subject);
+                }
             }
+            //It passes the subject it came from and difficulty as a String
         });
-
+        mediumButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(subject.equals("Discrete Maths")){
+                    String Difficulty = "Medium";
+                    new DiscreteMaths(Difficulty, subject);
+                }
+                if(subject.equals("Computer Organization")){
+                    String Difficulty = "Medium";
+                    new ComputerOrganization(Difficulty, subject);
+                }
+                if(subject.equals("Computer Science")){
+                    String Difficulty = "Medium";
+                    new ComputerScience(Difficulty, subject);
+                }
+            }
+            //It passes the subject it came from and difficulty as a String
+        });
+        easyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(subject.equals("Discrete Maths")){
+                    String Difficulty = "Easy";
+                    new DiscreteMaths(Difficulty, subject);
+                }
+                if(subject.equals("Computer Organization")){
+                    String Difficulty = "Easy";
+                    new ComputerOrganization(Difficulty, subject);
+                }
+                if(subject.equals("Computer Science")){
+                    String Difficulty = "Easy";
+                    new ComputerScience(Difficulty, subject);
+                }
+            }
+            //It passes the subject it came from and difficulty as a String
+        });
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == returnButton) {
+                if(e.getSource() == returnButton){
                     new WelcomePage("again");
+                    //Send again as the String to WelcomePage constructor when it opens
                 }
             }
         });
-    }
-
-    public static void main(String[] args) {
-        new DifficultyLevels("Discrete Maths");
-    }
-}
+    }}

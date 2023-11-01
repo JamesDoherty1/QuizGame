@@ -1,6 +1,7 @@
 package EPICGame;
 
 import java.sql.Connection;
+import java.util.HashMap;
 
 public class Main {
 
@@ -10,7 +11,9 @@ public class Main {
 
         // Check if the database connection is established before proceeding
         if (databaseConnection != null) {
-            LoginPage loginPage = new LoginPage();
+            // Create a HashMap to hold login information (username and password)
+            HashMap<String, String> loginInfo = new HashMap<>();
+            LoginPage loginPage = new LoginPage(loginInfo);
         } else {
             System.out.println("Failed to connect to the database.");
         }
