@@ -12,6 +12,11 @@ public class WelcomePage {
     JLabel welcomeLabel = new JLabel("Hello and Welcome!");
     JLabel loginSuccess = new JLabel("Login Success");
 
+    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
+
+
+
     WelcomePage(String userID) {
         this.welcomeLabel.setBounds(590, 50, 500, 35);
         this.welcomeLabel.setFont(new Font((String)null, 0, 25));
@@ -53,8 +58,20 @@ public class WelcomePage {
         settingsButton.setBounds(760, 600, 100, 35);
         this.frame.add(settingsButton);
 
+
         this.frame.setDefaultCloseOperation(3);
         this.frame.setExtendedState(6);
+
+        JButton leaderboardButton = new JButton("Leaderboard");
+        leaderboardButton.setBounds(1100, 155, 300, 60);
+        leaderboardButton.setFont(new Font("Black Ops One",Font.PLAIN,23));
+        leaderboardButton.setBackground(new Color(0,255,255));
+        leaderboardButton.setFocusable(false);
+        this.frame.add(leaderboardButton);
+
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         this.frame.setLayout((LayoutManager)null);
         this.frame.setVisible(true);
 
@@ -124,4 +141,9 @@ public class WelcomePage {
     public static void main(String[] args) {
         new WelcomePage("");
     }
+
 }
+
+    //From main it just opens a new WelcomePage and
+}
+

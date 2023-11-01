@@ -1,10 +1,14 @@
 package EPICGame;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.LayoutManager;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,11 +16,17 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+
 public class LoginPage implements ActionListener {
-    IDandPasswords idandPasswords = new IDandPasswords();
+    // GUI Components
     JFrame frame = new JFrame();
+    JLabel userLabel = new JLabel("Username");
+    JLabel passwordLabel = new JLabel("Password");
+    JTextField userField = new JTextField();
+    JPasswordField passwordField = new JPasswordField();
     JButton loginButton = new JButton("Login");
     JButton resetButton = new JButton("Reset");
+
     JButton signupButton = new JButton("Sign up");
     JTextField userIDField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
@@ -66,9 +76,77 @@ public class LoginPage implements ActionListener {
         this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.frame.setLayout((LayoutManager)null);
         this.frame.setVisible(true);
+
+    JButton signupButton = new JButton("Signup");
+    JLabel notRegistered = new JLabel("Don't have an account?");
+    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
+
+    LoginPage(); {
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setLayout(null);
+
+        // Add GUI components, set bounds, and add action listeners
+        userLabel.setBounds(570, 250, 100, 50);
+        userLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+        userLabel.setForeground(new Color(20, 255, 255));
+        frame.add(userLabel);
+
+        userField.setBounds(700, 250, 200, 50);
+        userField.setBackground(new Color(0, 255, 255));
+        userField.setFont(new Font("Orbitron", Font.BOLD, 20));
+        frame.add(userField);
+
+        passwordLabel.setBounds(570, 350, 100, 50);
+        passwordLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
+        passwordLabel.setForeground(new Color(20, 255, 255));
+        frame.add(passwordLabel);
+
+        passwordField.setBounds(700, 350, 200, 50);
+        passwordField.setBackground(new Color(0, 255, 255));
+        passwordField.setFont(new Font("Orbitron", Font.BOLD, 20));
+        frame.add(passwordField);
+
+        loginButton.setBounds(610, 450, 100, 50);
+        loginButton.setBackground(new Color(20, 255, 255));
+        loginButton.setFont(new Font("Orbitron", Font.BOLD, 20));
+        loginButton.setFocusable(false);
+        loginButton.addActionListener(this);
+        frame.add(loginButton);
+
+        resetButton.setBounds(720, 450, 100, 50);
+        resetButton.setBackground(new Color(20, 255, 255));
+        resetButton.setFont(new Font("Orbitron", Font.BOLD, 20));
+        resetButton.setFocusable(false);
+        resetButton.addActionListener(this);
+        frame.add(resetButton);
+
+        signupButton.setBounds(660, 550, 200, 50);
+        signupButton.setBackground(new Color(20, 255, 255));
+        signupButton.setFont(new Font("Orbitron", Font.BOLD, 20));
+        signupButton.setFocusable(false);
+        signupButton.addActionListener(this);
+        frame.add(signupButton);
+
+        notRegistered.setBounds(640, 600, 200, 50);
+        notRegistered.setFont(new Font("Orbitron", Font.BOLD, 20));
+        notRegistered.setForeground(new Color(20, 255, 255));
+        frame.add(notRegistered);
+
+        frame.add(backgroundLabel);
+        frame.setVisible(true);
+
     }
 
+    public LoginPage(HashMap loginInfo) {
+
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
+
         if (e.getSource() == this.resetButton) {
             this.userIDField.setText("");
             this.userPasswordField.setText("");
@@ -88,13 +166,58 @@ public class LoginPage implements ActionListener {
             } else {
                 this.messageLabel.setForeground(Color.red);
                 this.messageLabel.setText("Username not found");
+
+        if (e.getSource() == loginButton) {
+            String username = userField.getText();
+            String password = new String(passwordField.getPassword());
+
+            if (login(username, password)) {
+                // Successful login, open WelcomePage
+                frame.dispose();
+                new WelcomePage(username);
+            } else {
+                JOptionPane.showMessageDialog(frame, "Login failed. Invalid username or password.");
+
             }
+        } else if (e.getSource() == resetButton) {
+            userField.setText("");
+            passwordField.setText("");
+        } else if (e.getSource() == signupButton) {
+            frame.dispose();
+            new SignupPage();
         }
+    }
+
+    // Database login function
+    private boolean login(String username, String password) {
+        String url = "jdbc:sqlite:EpicDatabase.db";
+        String sql = "SELECT * FROM login WHERE username = ? AND password = ?";
+
+        try (Connection connection = DriverManager.getConnection(url);
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+
+            ResultSet resultSet = pstmt.executeQuery();
+
+            return resultSet.next(); // True if login is successful
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         if (e.getSource() == this.signupButton) {
             this.frame.dispose();
             new SignupPage(this.idandPasswords.getLoginInfo());
         }
 
+        return false; // False if login failed
+    }
+
+
+    public static void main(String[] args) {
+
+        new LoginPage();
     }
 }
