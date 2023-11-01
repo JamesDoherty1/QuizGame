@@ -112,28 +112,28 @@ public class RandomGame implements ActionListener {
         textarea.setBorder(BorderFactory.createBevelBorder(1));
         textarea.setEditable(false);
 
-        buttonA.setBounds(centerX - 325, centerY - 175, buttonWidth, buttonHeight);
+        buttonA.setBounds(centerX - 525, centerY - 175, buttonWidth, buttonHeight);
         buttonA.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonA.setBackground(new Color(0, 255, 255));
         buttonA.setFocusable(false);
         buttonA.addActionListener(this);
         buttonA.setText("A");
 
-        buttonB.setBounds(centerX - 325, centerY - 75, buttonWidth, buttonHeight);
+        buttonB.setBounds(centerX - 525, centerY - 75, buttonWidth, buttonHeight);
         buttonB.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonB.setBackground(new Color(0, 255, 255));
         buttonB.setFocusable(false);
         buttonB.addActionListener(this);
         buttonB.setText("B");
 
-        buttonC.setBounds(centerX - 325, centerY + 25, buttonWidth, buttonHeight);
+        buttonC.setBounds(centerX - 525, centerY + 25, buttonWidth, buttonHeight);
         buttonC.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonC.setBackground(new Color(0, 255, 255));
         buttonC.setFocusable(false);
         buttonC.addActionListener(this);
         buttonC.setText("C");
 
-        buttonD.setBounds(centerX - 325, centerY + 125, buttonWidth, buttonHeight);
+        buttonD.setBounds(centerX - 525, centerY + 125, buttonWidth, buttonHeight);
         buttonD.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonD.setBackground(new Color(0, 255, 255));
         buttonD.setFocusable(false);
@@ -159,25 +159,25 @@ public class RandomGame implements ActionListener {
 
 
 
-        answer_labelA.setBounds(centerX - 215, centerY - 175, 500, 100);
+        answer_labelA.setBounds(centerX - 415, centerY - 175, 1000, 100);
         answer_labelA.setBackground(new Color(50, 50, 50));
         answer_labelA.setForeground(new Color(25, 255, 0));
-        answer_labelA.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+        answer_labelA.setFont(new Font("Black Ops One", Font.PLAIN, 20));
 
-        answer_labelB.setBounds(centerX - 215, centerY - 75, 500, 100);
+        answer_labelB.setBounds(centerX - 415, centerY - 75, 1000, 100);
         answer_labelB.setBackground(new Color(50, 50, 50));
         answer_labelB.setForeground(new Color(25, 255, 0));
-        answer_labelB.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+        answer_labelB.setFont(new Font("Black Ops One", Font.PLAIN, 20));
 
-        answer_labelC.setBounds(centerX - 215, centerY + 25, 500, 100);
+        answer_labelC.setBounds(centerX - 415, centerY + 25, 1000, 100);
         answer_labelC.setBackground(new Color(50, 50, 50));
         answer_labelC.setForeground(new Color(25, 255, 0));
-        answer_labelC.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+        answer_labelC.setFont(new Font("Black Ops One", Font.PLAIN, 20));
 
-        answer_labelD.setBounds(centerX - 215, centerY + 125, 500, 100);
+        answer_labelD.setBounds(centerX - 415, centerY + 125, 1000, 100);
         answer_labelD.setBackground(new Color(50, 50, 50));
         answer_labelD.setForeground(new Color(25, 255, 0));
-        answer_labelD.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+        answer_labelD.setFont(new Font("Black Ops One", Font.PLAIN, 20));
 
         number_right.setBounds(centerX - 70, centerY - 50, 200, 100);
         number_right.setBackground(new Color(25, 25, 25));

@@ -45,11 +45,11 @@ public class LoginPage implements ActionListener {
 
         this.quizGame1.setBounds(centreX - 350, centreY - 400, 1000, 100);
         this.quizGame1.setForeground(new Color(0, 255, 255));
-        this.quizGame1.setFont(new Font("Black Ops One", Font.PLAIN, 80));
+        this.quizGame1.setFont(new Font("Orbitron", Font.PLAIN, 80));
 
         this.quizGame2.setBounds(centreX - 100, centreY - 400, 400, 100);
         this.quizGame2.setForeground(new Color(0, 180, 255));
-        this.quizGame2.setFont(new Font("Black Ops One", Font.PLAIN, 80));
+        this.quizGame2.setFont(new Font("Orbitron", Font.PLAIN, 80));
 
         this.madeBy.setBounds(centreX + 300, centreY + 250, 700, 100);
         this.madeBy.setForeground(new Color(255, 215, 0));
@@ -72,26 +72,26 @@ public class LoginPage implements ActionListener {
 
         this.userIDField.setBounds(centreX - 80, centreY - 200, 300, 50);
         this.userIDField.setBackground(new Color(0, 255, 255));
-        this.userIDField.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+        this.userIDField.setFont(new Font("Orbitron", Font.PLAIN, 20));
 
         this.userPasswordField.setBounds(centreX - 80, centreY - 100, 300, 50);
         this.userPasswordField.setBackground(new Color(0, 255, 255));
-        this.userPasswordField.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+        this.userPasswordField.setFont(new Font("Orbitron", Font.PLAIN, 20));
 
         this.loginButton.setBounds(centreX - 200, centreY, 200, 50);
-        this.loginButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
+        this.loginButton.setFont(new Font("Orbitron", Font.PLAIN, 30));
         this.loginButton.setBackground(new Color(0, 255, 255));
         this.loginButton.setFocusable(false);
         this.loginButton.addActionListener(this);
 
         this.resetButton.setBounds(centreX, centreY, 200, 50);
-        this.resetButton.setFont(new Font("Black Ops One", Font.PLAIN, 30));
+        this.resetButton.setFont(new Font("Orbitron", Font.PLAIN, 30));
         this.resetButton.setBackground(new Color(0, 255, 255));
         this.resetButton.setFocusable(false);
         this.resetButton.addActionListener(this);
 
         this.signupButton.setBounds(centreX - 150, centreY + 220, 300, 60);
-        this.signupButton.setFont(new Font("Black Ops One", Font.PLAIN, 40));
+        this.signupButton.setFont(new Font("Orbitron", Font.PLAIN, 40));
         this.signupButton.setBackground(new Color(0, 255, 255));
         this.signupButton.setFocusable(false);
         this.signupButton.addActionListener(this);

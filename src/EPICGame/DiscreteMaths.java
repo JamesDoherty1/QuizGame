@@ -111,16 +111,16 @@ public class DiscreteMaths implements ActionListener {
 
         textfield.setBounds(centerX - 325, centerY - 375, 650, 50);
         textarea.setBounds(centerX - 325, centerY - 325, 650, 100);
-        buttonA.setBounds(centerX - 325, centerY - 175, 100, 100);
-        buttonB.setBounds(centerX - 325, centerY - 75, 100, 100);
-        buttonC.setBounds(centerX - 325, centerY + 25, 100, 100);
-        buttonD.setBounds(centerX - 325, centerY + 125, 100, 100);
+        buttonA.setBounds(centerX - 525, centerY - 175, 100, 100);
+        buttonB.setBounds(centerX - 525, centerY - 75, 100, 100);
+        buttonC.setBounds(centerX - 525, centerY + 25, 100, 100);
+        buttonD.setBounds(centerX - 525, centerY + 125, 100, 100);
         returnButton.setBounds(centerX - 150, centerY + 275, 300, 80);
-        answer_labelA.setBounds(centerX - 215, centerY - 175, 500, 100);
-        answer_labelB.setBounds(centerX - 215, centerY - 75, 500, 100);
-        answer_labelC.setBounds(centerX - 215, centerY + 25, 500, 100);
-        answer_labelD.setBounds(centerX - 215, centerY + 125, 500, 100);
-        number_right.setBounds(centerX - 100, centerY - 100, 200, 100);
+        answer_labelA.setBounds(centerX - 415, centerY - 175, 1500, 100);
+        answer_labelB.setBounds(centerX - 415, centerY - 75, 1500, 100);
+        answer_labelC.setBounds(centerX - 415, centerY + 25, 1500, 100);
+        answer_labelD.setBounds(centerX - 415, centerY + 125, 1500, 100);
+        number_right.setBounds(centerX - 100, centerY - 100, 500, 100);
         percentage.setBounds(centerX - 100, centerY, 200, 100);
 
         textfield.setBackground(new Color(0, 255, 255));
@@ -140,10 +140,10 @@ public class DiscreteMaths implements ActionListener {
         buttonC.setFont(new Font("Orbitron", Font.BOLD, 35));
         buttonD.setFont(new Font("Orbitron", Font.BOLD, 35));
         returnButton.setFont(new Font("Orbitron", Font.BOLD, 35));
-        answer_labelA.setFont(new Font("Black Ops One", Font.PLAIN, 35));
-        answer_labelB.setFont(new Font("Black Ops One", Font.PLAIN, 35));
-        answer_labelC.setFont(new Font("Black Ops One", Font.PLAIN, 35));
-        answer_labelD.setFont(new Font("Black Ops One", Font.PLAIN, 35));
+        answer_labelA.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+        answer_labelB.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+        answer_labelC.setFont(new Font("Black Ops One", Font.PLAIN, 20));
+        answer_labelD.setFont(new Font("Black Ops One", Font.PLAIN, 20));
         number_right.setFont(new Font("Orbitron", Font.BOLD, 50));
         percentage.setFont(new Font("Orbitron", Font.BOLD, 50));
 

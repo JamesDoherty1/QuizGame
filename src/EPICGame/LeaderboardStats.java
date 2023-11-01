@@ -44,16 +44,18 @@ public class LeaderboardStats {
 
         // Connect to the SQLite database and fetch statistics
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:EpicDataBase.db");
-            String query = "SELECT mean, median, stdev FROM statistics WHERE username = ?";
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:EpicDatabase.db");
+            String query = "SELECT username, mean, median, stdev FROM statistics";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) {
-                mean = resultSet.getDouble("mean");
-                median = resultSet.getDouble("median");
-                stdev = resultSet.getDouble("stdev");
+            while (resultSet.next()) {
+                String statUsername = resultSet.getString("username");
+                if (statUsername.equals(username)) {
+                    mean = resultSet.getDouble("mean");
+                    median = resultSet.getDouble("median");
+                    stdev = resultSet.getDouble("stdev");
+                }
             }
 
             resultSet.close();
@@ -81,5 +83,9 @@ public class LeaderboardStats {
         standardDeviationLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
         standardDeviationLabel.setText("Standard Deviation: " + stdev);
         frame.add(standardDeviationLabel);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new LeaderboardStats("username"));
     }
 }

@@ -61,7 +61,7 @@ public class Leaderboard implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == first || e.getSource() == second || e.getSource() == third ||
                 e.getSource() == fourth || e.getSource() == fifth) {
-            new LeaderboardStats("PlaceholderUsername");
+            new LeaderboardStats("username");
         }
     }
 }

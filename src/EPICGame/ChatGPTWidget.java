@@ -44,7 +44,7 @@ public class ChatGPTWidget {
         responseArea.setLineWrap(true);
         responseArea.setEditable(false);
         responseArea.setBounds(centerX - 250, centerY - 320, 500, 550);
-        responseArea.setBackground(new Color(128, 0, 255));
+        responseArea.setBackground(new Color(0, 255, 255));
         responseArea.setFont(new Font("Black Ops One", Font.PLAIN, 15));
 
         inputField.setBounds(centerX - 145, centerY - 400, 300, 50);
