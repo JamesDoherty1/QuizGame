@@ -26,7 +26,7 @@ public class LoginPage implements ActionListener {
     JLabel quizGame2 = new JLabel("ISE");
     JLabel madeBy = new JLabel("Made by: James Doherty & Naem Haq");
     JLabel messageLabel = new JLabel();
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/LoginBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
     HashMap<String, String> logininfo = new HashMap();
 

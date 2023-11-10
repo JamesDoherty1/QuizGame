@@ -14,7 +14,7 @@ public class SettingsPage {
     JFrame frame = new JFrame();
     JLabel settingsLabel = new JLabel("Settings");
     JLabel musicLabel = new JLabel("Music");
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/SettingsPageBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     private void playBackgroundMusic() {

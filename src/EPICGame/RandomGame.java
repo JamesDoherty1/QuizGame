@@ -44,7 +44,7 @@ public class RandomGame implements ActionListener {
 
     private int[] questionOrder;  // Store the order of questions
     private int currentQuestionIndex;  // Keep track of the current question index
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/RandomGameBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     // Get the screen size

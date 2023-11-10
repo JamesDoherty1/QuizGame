@@ -11,7 +11,7 @@ public class DifficultyLevels {
     JButton hardButton = new JButton("Hard");
     JButton mediumButton = new JButton("Medium");
     JButton easyButton = new JButton("Easy");
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/DifficultyLevelBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
     JLabel headerLabel = new JLabel("How Confident Are You?");
 

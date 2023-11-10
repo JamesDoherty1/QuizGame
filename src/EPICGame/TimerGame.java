@@ -42,7 +42,7 @@ public class TimerGame implements ActionListener {
     JLabel seconds_left = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/TimerGameBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
     // Get the screen size
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

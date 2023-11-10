@@ -9,7 +9,7 @@ public class WelcomePage {
     JFrame frame = new JFrame();
     JLabel welcomeLabel = new JLabel("Hello and Welcome!");
     JLabel loginSuccess = new JLabel("Login Success");
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/WelcomePageBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
     // Calculate the center of the screen
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

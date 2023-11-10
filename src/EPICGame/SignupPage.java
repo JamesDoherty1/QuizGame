@@ -23,7 +23,7 @@ public class SignupPage implements ActionListener {
     private JLabel password2Label = new JLabel("Re-Enter Password:");
     private JLabel usernameMessageLabel = new JLabel("");
     private JLabel passwordMessageLabel = new JLabel("");
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/SignupBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     private int centerX;

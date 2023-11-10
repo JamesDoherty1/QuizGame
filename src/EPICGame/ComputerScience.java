@@ -76,7 +76,7 @@ public class ComputerScience implements ActionListener {
     JLabel answer_labelD = new JLabel();
     JTextField number_right = new JTextField();
     JTextField percentage = new JTextField();
-    ImageIcon backgroundImage = new ImageIcon("background.jpg");
+    ImageIcon backgroundImage = new ImageIcon("images/ComputerScienceBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
 
     public ComputerScience(String Difficulty, String subject) {
