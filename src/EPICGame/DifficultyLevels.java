@@ -14,8 +14,11 @@ public class DifficultyLevels {
     ImageIcon backgroundImage = new ImageIcon("images/DifficultyLevelBackground.jpg");
     JLabel backgroundLabel = new JLabel(backgroundImage);
     JLabel headerLabel = new JLabel("How Confident Are You?");
+    String subject;
 
     DifficultyLevels(String subject) {
+        this.subject = subject;
+
         this.frame.add(backgroundLabel);
         this.frame.setContentPane(backgroundLabel);
 
@@ -62,15 +65,15 @@ public class DifficultyLevels {
             public void actionPerformed(ActionEvent e) {
                 if(subject.equals("Discrete Maths")){
                     String Difficulty = "Hard";
-                    new DiscreteMaths(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
                 if(subject.equals("Computer Organization")){
                     String Difficulty = "Hard";
-                    new ComputerOrganization(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
                 if(subject.equals("Computer Science")){
                     String Difficulty = "Hard";
-                    new ComputerScience(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
             }
             //It passes the subject it came from and difficulty as a String
@@ -80,15 +83,15 @@ public class DifficultyLevels {
             public void actionPerformed(ActionEvent e) {
                 if(subject.equals("Discrete Maths")){
                     String Difficulty = "Medium";
-                    new DiscreteMaths(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
                 if(subject.equals("Computer Organization")){
                     String Difficulty = "Medium";
-                    new ComputerOrganization(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
                 if(subject.equals("Computer Science")){
                     String Difficulty = "Medium";
-                    new ComputerScience(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
             }
             //It passes the subject it came from and difficulty as a String
@@ -98,15 +101,15 @@ public class DifficultyLevels {
             public void actionPerformed(ActionEvent e) {
                 if(subject.equals("Discrete Maths")){
                     String Difficulty = "Easy";
-                    new DiscreteMaths(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
                 if(subject.equals("Computer Organization")){
                     String Difficulty = "Easy";
-                    new ComputerOrganization(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
                 if(subject.equals("Computer Science")){
                     String Difficulty = "Easy";
-                    new ComputerScience(Difficulty, subject);
+                    new QuizFrame(Difficulty, subject);
                 }
             }
             //It passes the subject it came from and difficulty as a String
