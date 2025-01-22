@@ -1,8 +1,6 @@
 package EPICGame;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.LayoutManager;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -11,72 +9,67 @@ public class WelcomePage {
     JFrame frame = new JFrame();
     JLabel welcomeLabel = new JLabel("Hello and Welcome!");
     JLabel loginSuccess = new JLabel("Login Success");
+    ImageIcon backgroundImage = new ImageIcon("images/WelcomePageBackground.jpg");
+    JLabel backgroundLabel = new JLabel(backgroundImage);
+    // Calculate the center of the screen
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int centerX = screenSize.width / 2;
+    int centerY = screenSize.height / 2;
 
     WelcomePage(String userID) {
-        this.welcomeLabel.setBounds(590, 50, 500, 35);
-        this.welcomeLabel.setFont(new Font((String)null, 0, 25));
-        this.welcomeLabel.setText("Hello " + userID + ", Welcome to the Quiz!");
-        this.frame.add(this.welcomeLabel);
+        this.frame.add(backgroundLabel);
+        this.frame.setContentPane(backgroundLabel);
 
-        this.loginSuccess.setBounds(670, 650, 500, 35);
-        this.loginSuccess.setFont(new Font((String)null, 2, 25));
-        this.loginSuccess.setText("Login Success");
-        this.loginSuccess.setForeground(Color.green);
-        this.frame.add(this.loginSuccess);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setLayout(null);
+        frame.setVisible(true);
 
+        welcomeLabel.setBounds(centerX - 330, centerY - 400, 1000, 80);
+        welcomeLabel.setFont(new Font("Orbitron", Font.BOLD, 50));
+        welcomeLabel.setForeground(new Color(20, 255, 255));
+        welcomeLabel.setText("Hello " + userID + ", Welcome to the Quiz");
+        frame.add(welcomeLabel);
 
-        JButton button1 = new JButton("Discrete Maths");
-        button1.setBounds(660, 300, 200, 35);
-        this.frame.add(button1);
+        loginSuccess.setBounds(centerX - 130, centerY + 330, 500, 35);
+        loginSuccess.setFont(new Font("Orbitron", Font.PLAIN, 30));
+        loginSuccess.setForeground(Color.GREEN);
+        frame.add(loginSuccess);
 
-        JButton button2 = new JButton("Computer Organization");
-        button2.setBounds(660, 350, 200, 35);
-        this.frame.add(button2);
+        // Buttons
+        JButton button1 = createButton("Discrete Maths", centerX - 150, centerY - 230);
+        JButton button2 = createButton("Computer Organization", centerX - 150, centerY - 150);
+        JButton button3 = createButton("Computer Science", centerX - 150, centerY - 70);
+        JButton button4 = createButton("Timer Game", centerX - 150, centerY + 10);
+        JButton button6 = createButton("Random Game", centerX - 150, centerY + 90);
+        JButton button5 = createButton("Ask Me Anything!", centerX - 150, centerY + 170);
 
-        JButton button3 = new JButton("Computer Science");
-        button3.setBounds(660, 400, 200, 35);
-        this.frame.add(button3);
+        JButton logoutButton = createButton("Logout", centerX - 300, centerY + 250);
+        JButton settingsButton = createButton("Settings", centerX, centerY + 250);
+        JButton leaderboardButton = createButton("Leaderboard", centerX + 410, centerY - 220);
 
-        JButton button4 = new JButton("Timer Game");
-        button4.setBounds(660, 450, 200, 35);
-        this.frame.add(button4);
-
-        JButton button5 = new JButton("Chat GPT");
-        button5.setBounds(660, 500, 200, 35);
-        this.frame.add(button5);
-
-        JButton logoutButton = new JButton("Logout");
-        logoutButton.setBounds(660, 600, 100, 35);
-        this.frame.add(logoutButton);
-
-        JButton settingsButton = new JButton("Settings");
-        settingsButton.setBounds(760, 600, 100, 35);
-        this.frame.add(settingsButton);
-
-        this.frame.setDefaultCloseOperation(3);
-        this.frame.setExtendedState(6);
-        this.frame.setLayout((LayoutManager)null);
-        this.frame.setVisible(true);
-
-
+        // Button actions
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new DiscreteMaths();
+                String subject = "Discrete Maths";
+                new DifficultyLevels(subject);
             }
         });
 
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new ComputerOrganization();
+                String subject = "Computer Organization";
+                new DifficultyLevels(subject);
             }
         });
 
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new ComputerScience();
+                String subject = "Computer Science";
+                new DifficultyLevels(subject);
             }
         });
 
@@ -91,9 +84,17 @@ public class WelcomePage {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button5) {
                     frame.dispose();
-                    ChatGPTWidget.main(new String[0]);
+                    new ChatGPTWidget();
                 }
+            }
+        });
 
+        button6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == button6) {
+                    frame.dispose();
+                    new RandomGame("UsernameGoesHere");
+                }
             }
         });
         logoutButton.addActionListener(new ActionListener() {
@@ -104,7 +105,6 @@ public class WelcomePage {
                     frame.dispose();
                     new LoginPage(this.idandPasswords.getLoginInfo());
                 }
-
             }
         });
         settingsButton.addActionListener(new ActionListener() {
@@ -112,13 +112,25 @@ public class WelcomePage {
                 if (e.getSource() == settingsButton) {
                     new SettingsPage();
                 }
-
+            }
+        });
+        leaderboardButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == leaderboardButton) {
+                    new Leaderboard();
+                }
             }
         });
     }
 
-    private void openNewPage(String pageName) {
-        JOptionPane.showMessageDialog(this.frame, "Opening " + pageName + " page.");
+    public JButton createButton(String text, int x, int y) {
+        JButton button = new JButton(text);
+        button.setBounds(x, y, 300, 60);
+        button.setFont(new Font("Black Ops One", Font.PLAIN, 25));
+        button.setBackground(new Color(0, 255, 255));
+        button.setFocusable(false);
+        frame.add(button);
+        return button;
     }
 
     public static void main(String[] args) {
